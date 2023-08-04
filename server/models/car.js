@@ -1,5 +1,7 @@
 const Sequelize = require("sequelize");
 const config = require("../configuration/config");
+const CarImage = require("./car_image");
+const Vendor = require("./vendor");
 
 const Car = config.define("car", {
     car_id: {
@@ -54,5 +56,21 @@ const Car = config.define("car", {
     }
     
 }, {timestamps: false});
+
+CarImage.belongsTo(Car, {
+    foreignKey: 'car_id'
+});
+
+Car.hasMany(CarImage, {
+    foreignKey: 'car_id'
+});
+
+Car.belongsTo(Vendor, {
+    foreignKey: 'vendor_id'
+});
+
+Vendor.hasMany(Car, {
+    foreignKey: 'car_id'
+});
 
 module.exports = Car;

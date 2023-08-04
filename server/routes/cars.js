@@ -1,9 +1,16 @@
 const Car = require("../models/car");
+const Vendor = require("../models/vendor");
+const CarImage = require("../models/car_image");
 const router = require("express").Router();
 
 // Get all cars
 router.get("/", (req, res) => {
-    Car.findAll().then((results) => {
+
+    let models = {
+        include: [Vendor, CarImage]
+    };
+
+    Car.findAll(models).then((results) => {
         res.status(200).send(results);
     }).catch((err) => {
         res.status(500).send(err);

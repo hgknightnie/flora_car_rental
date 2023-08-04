@@ -55,43 +55,50 @@ create table orders (
 );
 
 /*
-Toyota Corolla - The Toyota Corolla is a trusted and economical compact sedan, known for its reliability and fuel efficiency. It offers practicality and a comfortable ride, making it a popular choice for daily commuting and family transportation.
+toyota corolla - the toyota corolla is a trusted and economical compact sedan, known for its reliability and fuel efficiency. it offers practicality and a comfortable ride, making it a popular choice for daily commuting and family transportation.
 
-Ford Mustang - The Ford Mustang is an iconic American muscle car that combines classic design with powerful performance. With its distinct style and robust engines, the Mustang delivers thrilling acceleration and a true sense of driving excitement.
+ford mustang - the ford mustang is an iconic american muscle car that combines classic design with powerful performance. with its distinct style and robust engines, the mustang delivers thrilling acceleration and a true sense of driving excitement.
 
-Honda Civic - The Honda Civic is a versatile and well-rounded compact car. It's renowned for its longevity, excellent fuel economy, and comfortable interior. The Civic appeals to a wide range of drivers, from practical commuters to enthusiasts.
+honda civic - the honda civic is a versatile and well-rounded compact car. it's renowned for its longevity, excellent fuel economy, and comfortable interior. the civic appeals to a wide range of drivers, from practical commuters to enthusiasts.
 
-Chevrolet Corvette - The Chevrolet Corvette is a legendary sports car that boasts sleek aesthetics and exhilarating speed. With its potent V8 engines, precise handling, and driver-focused cockpit, the Corvette offers an extraordinary driving experience.
+chevrolet corvette - the chevrolet corvette is a legendary sports car that boasts sleek aesthetics and exhilarating speed. with its potent v8 engines, precise handling, and driver-focused cockpit, the corvette offers an extraordinary driving experience.
 
-BMW 3 Series - The BMW 3 Series is a luxurious and sporty sedan that sets the standard for driving dynamics in its class. It combines elegant design, advanced technology, and responsive engines to provide a refined yet engaging driving journey.
+bmw 3 series - the bmw 3 series is a luxurious and sporty sedan that sets the standard for driving dynamics in its class. it combines elegant design, advanced technology, and responsive engines to provide a refined yet engaging driving journey.
 
-Mercedes-Benz E-Class - The Mercedes-Benz E-Class is an executive car that exudes elegance and sophistication. With its plush interior, cutting-edge technology, and comfortable ride, the E-Class offers a first-class travel experience.
+mercedes-benz e-class - the mercedes-benz e-class is an executive car that exudes elegance and sophistication. with its plush interior, cutting-edge technology, and comfortable ride, the e-class offers a first-class travel experience.
 
-Tesla Model S - The Tesla Model S is a groundbreaking electric luxury sedan, known for its impressive range and instant acceleration. Pioneering autonomous features and a minimalist interior make the Model S a symbol of future-oriented automotive innovation.
+tesla model s - the tesla model s is a groundbreaking electric luxury sedan, known for its impressive range and instant acceleration. pioneering autonomous features and a minimalist interior make the model s a symbol of future-oriented automotive innovation.
 
-Audi A4 - The Audi A4 is a stylish and tech-savvy sedan that emphasizes modern design and advanced technology. Its well-crafted interior, refined ride, and array of high-tech features contribute to its appeal among luxury car enthusiasts.
+audi a4 - the audi a4 is a stylish and tech-savvy sedan that emphasizes modern design and advanced technology. its well-crafted interior, refined ride, and array of high-tech features contribute to its appeal among luxury car enthusiasts.
 
-Subaru Outback - The Subaru Outback is a rugged crossover wagon designed for both on-road comfort and off-road adventures. With its spacious interior, all-wheel drive capability, and ample cargo space, the Outback is a versatile choice for outdoor enthusiasts.
+subaru outback - the subaru outback is a rugged crossover wagon designed for both on-road comfort and off-road adventures. with its spacious interior, all-wheel drive capability, and ample cargo space, the outback is a versatile choice for outdoor enthusiasts.
 
-Nissan Altima - The Nissan Altima is a comfortable midsize sedan offering a balance of practicality and refined features. Known for its smooth ride, spacious cabin, and user-friendly technology, the Altima is a reliable option for daily commuting and family travel.
+nissan altima - the nissan altima is a comfortable midsize sedan offering a balance of practicality and refined features. known for its smooth ride, spacious cabin, and user-friendly technology, the altima is a reliable option for daily commuting and family travel.
 */
 
-INSERT INTO vendors
+insert into vendors
 (vendor_name, phone, email, location, description)
-VALUES('Neil', '(403)888-8888', 'neil@gmail.com', '7652 26 Ave SW', 'a reliable personal vendor');
+values('neil', '(403)888-8888', 'neil@gmail.com', '7652 26 ave sw', 'a reliable personal vendor');
 
-INSERT INTO cars
+insert into cars
 (location, available_time, price, car_type, fuel_type, vendor_id, make, model, mileage, status, candition)
-VALUES('7652 26 Ave SW', null, 50, 'sedan', 'gasoline', 1, 'Toyota', 'Corolla', 10000, 'avaliable', 'The Toyota Corolla is a trusted and economical compact sedan, known for its reliability and fuel efficiency. It offers practicality and a comfortable ride, making it a popular choice for daily commuting and family transportation.');
+values('7652 26 ave sw', null, 50, 'sedan', 'gasoline', 1, 'toyota', 'corolla', 10000, 'avaliable', 'the toyota corolla is a trusted and economical compact sedan, known for its reliability and fuel efficiency. it offers practicality and a comfortable ride, making it a popular choice for daily commuting and family transportation.');
 
-INSERT INTO cars
+insert into cars
 (location, available_time, price, car_type, fuel_type, vendor_id, make, model, mileage, status, candition)
-VALUES('7652 26 Ave SW', null, 60, 'sedan', 'gasoline', 1, 'Audi', 'A4', 5000, 'avaliable', 'The Audi A4 is a stylish and tech-savvy sedan that emphasizes modern design and advanced technology. Its well-crafted interior, refined ride, and array of high-tech features contribute to its appeal among luxury car enthusiasts.');
+values('7652 26 ave sw', null, 60, 'sedan', 'gasoline', 1, 'audi', 'a4', 5000, 'avaliable', 'the audi a4 is a stylish and tech-savvy sedan that emphasizes modern design and advanced technology. its well-crafted interior, refined ride, and array of high-tech features contribute to its appeal among luxury car enthusiasts.');
 
-INSERT INTO customers
+insert into customers
 (customer_name, phone, email)
-VALUES('John wick', '(403)777-7777', 'johnwick@gmail.com');
+values('john wick', '(403)777-7777', 'johnwick@gmail.com');
 
-INSERT INTO hgknight.orders
+
+insert into orders
 (customer_id, car_id, pickup_location, pickup_date, dropoff_location, dropoff_date, total_price, mileage_limit, order_date)
-VALUES(1, 1, '7652 26 Ave SW', '2023-8-2 12:20', '7652 26 Ave SW', '2023-8-6 12:20', 250, 2000, '2023-8-1 09:21');
+values(1, 1, '7652 26 ave sw', '2023-8-2 12:20', '7652 26 ave sw', '2023-8-6 12:20', 250, 2000, '2023-8-1 09:21');
+
+insert into car_images (car_id, image_name, `path`) values
+  (1, 'car1.jpg', '/assets'),
+  (1, 'car2.jpg', '/assets'),
+  (1, 'car3.jpg', '/assets')
+ ;
