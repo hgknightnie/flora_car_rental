@@ -2,15 +2,57 @@ const Car = require("../models/car");
 const Vendor = require("../models/vendor");
 const CarImage = require("../models/car_image");
 const router = require("express").Router();
+const {Op} = require('sequelize');
 
 // Get all cars
+/* queryParam: 
+     order: order by field
+     direction: null or 'desc'
+*/
 router.get("/", (req, res) => {
 
-    let models = {
+    // relate to tables
+    let options = {
         include: [Vendor, CarImage]
     };
 
-    Car.findAll(models).then((results) => {
+    // order
+    let queryOrder = req.query.order;
+    if(queryOrder !== undefined) {
+        let orderDirection = req.query.direction;
+        if(orderDirection !== undefined && orderDirection.toLowerCase() === 'desc') {
+            options.order = [[queryOrder, 'DESC']];
+        } else {
+            options.order = [[queryOrder]];
+        }
+    }
+
+    // filter
+    let make = req.query.make;
+    options.where = {};
+    if(make !== undefined) {
+        // options.where = {'make' : make};
+        options.where.make = make;
+    }
+    let carType = req.query.car_type;
+    if(carType !== undefined) {
+        options.where.car_type = carType;
+    }
+    let fuelType = req.query.fuel_type;
+    if(fuelType !== undefined) {
+        options.where.fuel_type = fuelType;
+    }
+    let price = req.query.price;
+    if(price !== undefined) {
+        let index = price.indexOf('|');
+        // let lowPrice = parseInt(price.substring(0, index));
+        let lowPrice = price.substring(0, index);
+        let highPrice = price.substring(index + 1);
+        options.where.price = {[Op.between] : [lowPrice, highPrice]};
+    }
+    // Car.findAll({where : {"price" : {[Op.between] : [45 , 60 ]}}}).then((results) => {
+
+    Car.findAll(options).then((results) => {
         res.status(200).send(results);
     }).catch((err) => {
         res.status(500).send(err);
