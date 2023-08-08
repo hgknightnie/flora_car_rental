@@ -10,11 +10,7 @@ const routes: Routes = [
       {
         path: 'home',
         loadChildren: () => import('../home/home.module').then(m => m.HomePageModule)
-      },
-      {
-        path: 'gmap',
-        loadChildren: () => import('../gmap/gmap.module').then(m => m.GmapPageModule)
-      },
+      },     
       {
         path: 'myrental',
         loadChildren: () => import('../myrental/myrental.module').then(m => m.MyrentalPageModule)
@@ -22,6 +18,10 @@ const routes: Routes = [
       {
         path: 'mycar',
         loadChildren: () => import('../mycar/mycar.module').then(m => m.MycarPageModule)
+      },
+      {
+        path: 'gmap',
+        loadChildren: () => import('../gmap/gmap.module').then(m => m.GmapPageModule)
       },
       {
         path: '',

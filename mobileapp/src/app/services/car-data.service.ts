@@ -10,7 +10,7 @@ export class CarDataService {
     city: 'Calgary',
     lat: 51.03938287793352,
     lng: -114.0620640034704,
-    description: `Calgary is a city in the Canadian province of Alberta. It is the largest city in Alberta and the largest metro area within the three Prairie Provinces region.`,
+    description: `Select a car from map`,
     car_locations: [
       {
         name: 'Toyota',
