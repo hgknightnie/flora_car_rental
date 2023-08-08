@@ -12,6 +12,10 @@ const routes: Routes = [
         loadChildren: () => import('../home/home.module').then(m => m.HomePageModule)
       },
       {
+        path: 'gmap',
+        loadChildren: () => import('../gmap/gmap.module').then(m => m.GmapPageModule)
+      },
+      {
         path: 'myrental',
         loadChildren: () => import('../myrental/myrental.module').then(m => m.MyrentalPageModule)
       },
