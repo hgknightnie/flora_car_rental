@@ -20,10 +20,12 @@
       <ion-button fill="clear" (click)="sortList('mileage', 'desc')">Mileage</ion-button>
     </ion-buttons>
     <ion-buttons slot="end">
-      <ion-button fill="solid" slot="end" (click)="filterList()">
+      <ion-button fill="solid" slot="end" (click)="showAlert()" id="car-filter">
         Filter
         <ion-icon name="caret-down-outline"></ion-icon>
       </ion-button>
+      <!-- <ion-alert trigger="car-filter" header="Select the Car Type" [buttons]="alertButtons"
+        [inputs]="alertInputs"></ion-alert> -->
     </ion-buttons>
   </ion-toolbar>
 
