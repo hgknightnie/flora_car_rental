@@ -1,8 +1,8 @@
 import { Component, ElementRef, OnDestroy, ViewChild } from '@angular/core';
 import { GoogleMap } from '@capacitor/google-maps';
 import { environment } from 'src/environments/environment';
-import { CityLocation, CarLocation } from '../interfaces/location';
-import { MarkerEl } from '../interfaces/marker';
+import { ICityLocation, ICarLocation } from '../interfaces/ilocation';
+import { IMarkerEl } from '../interfaces/imarker';
 import { CarDataService } from '../services/car-data.service';
 
 
@@ -24,12 +24,12 @@ export class GmapPage implements OnDestroy  {
   public description: string | null = null;
 
   // stores the Google Map Markers that have been generated
-  private markers: Array<MarkerEl> = [];
+  private markers: Array<IMarkerEl> = [];
 
   // stores the generated Google Map Marker Ids - which will be used for subsequent clearing of markers when switching between locations
   private ids: Array<string> = [];
 
-  private calgaryLocation!: CityLocation;
+  private calgaryLocation!: ICityLocation;
 
   constructor(carDataService: CarDataService) {
     this.calgaryLocation = carDataService.getCarData();
@@ -84,13 +84,13 @@ export class GmapPage implements OnDestroy  {
 
   // Receives the supplied location, changes the map to display this location
   // and renders the associated markers for that location
-  private async location(selectedLocation: CityLocation): Promise<void> {
+  private async location(selectedLocation: ICityLocation): Promise<void> {
     await this.manageMap(selectedLocation);
     await this.manageMarkers(selectedLocation);
   }
 
   // move the displayed map location to the designated coordinates
-  private async manageMap(location: CityLocation): Promise<void> {
+  private async manageMap(location: ICityLocation): Promise<void> {
     await this.map.setCamera({
       coordinate: {
         lat: location.lat,
@@ -104,7 +104,7 @@ export class GmapPage implements OnDestroy  {
   // take the generated markers ids and adding those to each markers array entry 
   // (for enabling the generated markers to be identified for subsequent removal when we change locations) 
   // set up a listener event to the marker being clicked (and subsequently handles the retrieved data)
-  private async manageMarkers(location: CityLocation): Promise<void> {
+  private async manageMarkers(location: ICityLocation): Promise<void> {
     this.markers = this.generateMarkers(location.car_locations);
     this.ids = await this.map.addMarkers(this.markers);
     this.markers.map((marker, index) => {
@@ -129,7 +129,7 @@ export class GmapPage implements OnDestroy  {
   }
 
   // Generates the individual map markers from the supplied locations
-  private generateMarkers(locations: Array<CarLocation>): Array<any> {
+  private generateMarkers(locations: Array<ICarLocation>): Array<any> {
     return locations.map((location: any, index: number) => ({
       coordinate: {
         lat: location.lat,

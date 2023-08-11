@@ -1,0 +1,63 @@
+<ion-card color="light">
+  <ion-card-content>
+
+    <ion-grid>
+      <ion-row>
+        <ion-col size="auto">
+          <ion-img *ngIf="car.car_images[0]; else noImage"
+            src="{{ car.car_images[0].path}}{{ car.car_images[0].image_name}}" alt="Car Image"></ion-img>
+          <ng-template #noImage>
+            <ion-img src="assets/cars/default-car.jpg" alt="Car Image"></ion-img>
+          </ng-template>
+          <ion-button fill="clear" size="small" [routerLink]="['/tabs/home/cardetail', car.car_id]">View</ion-button>
+        </ion-col>
+
+        <ion-col>
+          <ion-grid>
+            <ion-row>
+              <ion-col class="ion-no-padding">
+                <div>
+                  <span class="car_make">{{ car.make }} </span>{{ car.model }}
+                </div>
+              </ion-col>
+              <ion-col size="auto">
+                <ion-text color="primary">
+                  <span class="price_text">${{ car.price }} </span><span>/day</span>
+                </ion-text>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col class="ion-no-padding">
+                Pick up at: {{ car.location }}
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col class="ion-no-padding">
+                Car Type: {{ car.car_type }}
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col class="ion-no-padding">
+                Fuel Type: {{ car.fuel_type }}
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col class="ion-no-padding">
+                Mileage: {{ car.mileage }}
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col class="ion-no-padding">
+                Times of Order: {{ car.ordertimes }}
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-col>
+
+      </ion-row>
+    </ion-grid>
+
+  </ion-card-content>
+  
+
+</ion-card>

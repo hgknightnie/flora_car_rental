@@ -61,8 +61,13 @@ router.get("/", (req, res) => {
 
 // Get specific car
 router.get("/:car_id", (req, res) => {
+    // relate to tables
+    let options = {
+        include: [Vendor, CarImage]
+    };
+
     let carId = req.params.car_id;
-    Car.findByPk(carId).then((result) => {
+    Car.findByPk(carId, options).then((result) => {
         res.status(200).send(result);
     }).catch((err)=>{
         res.status(500).send(err);

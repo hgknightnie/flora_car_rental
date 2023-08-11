@@ -53,8 +53,11 @@ const Car = config.define("car", {
     candition: {
         type: Sequelize.STRING,
         allowNull: true
+    },
+    ordertimes: {
+        type: Sequelize.INTEGER,
+        allowNull: false
     }
-    
 }, {timestamps: false});
 
 CarImage.belongsTo(Car, {

@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import { CityLocation } from '../interfaces/location';
+import { ICityLocation } from '../interfaces/ilocation';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CarDataService {
 
-  private calgaryLocation: CityLocation = {
+  private calgaryLocation: ICityLocation = {
     city: 'Calgary',
     lat: 51.03938287793352,
     lng: -114.0620640034704,

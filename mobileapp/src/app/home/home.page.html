@@ -7,4 +7,27 @@
 
 <ion-content [fullscreen]="true">
   <ion-searchbar color="light" placeholder="Enter a pickup location"></ion-searchbar>
+
+  <ion-toolbar color="light">
+    <ion-buttons slot="start">
+      <ion-button fill="clear" (click)="sortList('ordertimes', 'desc')">Popular</ion-button>
+
+      <ion-button fill="clear" (click)="sortList('price', 'desc')">
+        Price
+        <ion-icon [name]="priceIconName"></ion-icon>
+      </ion-button>
+
+      <ion-button fill="clear" (click)="sortList('mileage', 'desc')">Mileage</ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button fill="solid" slot="end" (click)="filterList()">
+        Filter
+        <ion-icon name="caret-down-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+  <div *ngFor="let car_item of cars">
+    <app-car [car]="car_item"></app-car>
+  </div>
 </ion-content>

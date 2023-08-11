@@ -11,9 +11,9 @@ create table cars (
 	mileage int not null,
 	status enum('avaliable', 'booked', 'rented') not null default 'avaliable',
 	candition varchar(500),
+	ordertimes int default 0 not null,
 	primary key (car_id)
 );
-
 create table car_images (
 	image_id int not null auto_increment,
 	car_id int not null,
@@ -98,7 +98,7 @@ insert into orders
 values(1, 1, '7652 26 ave sw', '2023-8-2 12:20', '7652 26 ave sw', '2023-8-6 12:20', 250, 2000, '2023-8-1 09:21');
 
 insert into car_images (car_id, image_name, `path`) values
-  (1, 'car1.jpg', '/assets'),
-  (1, 'car2.jpg', '/assets'),
-  (1, 'car3.jpg', '/assets')
+  (1, 'corolla1.jpg', 'assets/cars/'),
+  (1, 'corolla2.jpg', 'assets/cars/'),
+  (1, 'corolla3.jpg', 'assets/cars/')
  ;

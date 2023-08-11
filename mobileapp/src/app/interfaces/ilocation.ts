@@ -1,15 +1,15 @@
 // define the data structure for location data used within the application
 // declare and subsequently use the country locations data for display in the rendered Google Map instance
 
-export interface CityLocation {
+export interface ICityLocation {
     city: string;
     lat: number;
     lng: number;
     description: string;
-    car_locations: Array<CarLocation>;
+    car_locations: Array<ICarLocation>;
 }
 
-export interface CarLocation {
+export interface ICarLocation {
     name: string;
     lat: number;
     lng: number;
