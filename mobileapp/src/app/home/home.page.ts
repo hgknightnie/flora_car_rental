@@ -72,7 +72,6 @@ export class HomePage implements OnInit {
 
   // sort list by field and direction
   sortList(field: string, direction: string) {
-    console.log(field, direction);
     if (field == 'price') {
       if (this.priceDirection === 'desc') {
         this.priceDirection = 'asc';

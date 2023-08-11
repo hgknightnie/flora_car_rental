@@ -16,4 +16,6 @@ export interface Icar {
     candition: string;
     car_images: ICarImage[]; 
     ordertimes: number;
+    lat: number;
+    lng: number;
 }

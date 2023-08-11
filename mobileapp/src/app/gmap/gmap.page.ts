@@ -3,7 +3,8 @@ import { GoogleMap } from '@capacitor/google-maps';
 import { environment } from 'src/environments/environment';
 import { ICityLocation, ICarLocation } from '../interfaces/ilocation';
 import { IMarkerEl } from '../interfaces/imarker';
-import { CarDataService } from '../services/car-data.service';
+import { Icar } from '../interfaces/icar';
+import { CarsService } from '../services/cars.service';
 
 
 @Component({
@@ -31,8 +32,30 @@ export class GmapPage implements OnDestroy  {
 
   private calgaryLocation!: ICityLocation;
 
-  constructor(carDataService: CarDataService) {
-    this.calgaryLocation = carDataService.getCarData();
+  cars!: Icar[];
+
+  constructor(private carService: CarsService) {
+
+    this.calgaryLocation = {
+      city: 'Calgary',
+      lat: 51.03938287793352,
+      lng: -114.0620640034704,
+      description: `Select a car from map`,
+      cars: []
+    };
+
+    // get car list
+    carService.getCars().subscribe({
+      next: (results) => {
+        this.cars = results;
+        this.calgaryLocation.cars = this.cars;
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    });
+
+    
   }
 
   /**
@@ -105,7 +128,7 @@ export class GmapPage implements OnDestroy  {
   // (for enabling the generated markers to be identified for subsequent removal when we change locations) 
   // set up a listener event to the marker being clicked (and subsequently handles the retrieved data)
   private async manageMarkers(location: ICityLocation): Promise<void> {
-    this.markers = this.generateMarkers(location.car_locations);
+    this.markers = this.generateMarkers(location.cars);
     this.ids = await this.map.addMarkers(this.markers);
     this.markers.map((marker, index) => {
       marker.markerId = this.ids[index];
@@ -129,15 +152,15 @@ export class GmapPage implements OnDestroy  {
   }
 
   // Generates the individual map markers from the supplied locations
-  private generateMarkers(locations: Array<ICarLocation>): Array<any> {
-    return locations.map((location: any, index: number) => ({
+  private generateMarkers(cars: Array<Icar>): Array<any> {
+    return cars.map((car: any, index: number) => ({
       coordinate: {
-        lat: location.lat,
-        lng: location.lng
+        lat: car.lat,
+        lng: car.lng
       },
-      title: location.name,
-      snippet: location.description,
-      iconUrl: `/assets/icon/cars/${location.make}.svg`,
+      title: `${car.make} - ${car.model}`,
+      snippet: `[mileage:${car.mileage}] [car type:${car.car_type}] [fule type:${car.fuel_type}]`,
+      iconUrl: `/assets/icon/cars/${car.make}.svg`,
       iconSize: {
         width: 32,
         height: 32

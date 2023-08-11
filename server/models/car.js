@@ -57,6 +57,14 @@ const Car = config.define("car", {
     ordertimes: {
         type: Sequelize.INTEGER,
         allowNull: false
+    },
+    lat: {
+        type: Sequelize.FLOAT,
+        allowNull: false
+    },
+    lng: {
+        type: Sequelize.FLOAT,
+        allowNull: false
     }
 }, {timestamps: false});
 
