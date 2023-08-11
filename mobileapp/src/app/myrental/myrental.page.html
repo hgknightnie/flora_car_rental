@@ -13,6 +13,44 @@
 
   <div>
     <p>文字靠下</p>
-    </div>
+  </div>
 
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <h3>no float</h3>
+        <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg"
+          height="50px" />
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac vehicula lorem.
+      </ion-col>
+      <ion-col>
+        <h3>float-left</h3>
+        <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg"
+          height="50px" class="ion-float-left" />
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac vehicula lorem.
+      </ion-col>
+      <ion-col>
+        <h3>float-right</h3>
+        <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg"
+          height="50px" class="ion-float-right" />
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac vehicula lorem.
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-toolbar color="light">
+    <ion-grid>
+      <ion-row>
+        <ion-col class="ion-no-padding">
+          <ion-searchbar color="light" placeholder="Enter a pickup location"></ion-searchbar>
+        </ion-col>
+        <ion-col size="auto" class="ion-no-padding">
+          <ion-button fill="clear" class="ion-no-padding">
+            <ion-icon id="mapicon" name="location-outline" class="ion-float-right" size="large"
+              color="primary"></ion-icon>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+  </ion-toolbar>
 </ion-content>

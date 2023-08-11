@@ -1,7 +1,7 @@
 import { CarsService } from './../services/cars.service';
 import { Component, OnInit } from '@angular/core';
 import { Icar } from '../interfaces/icar';
-import { AlertController } from '@ionic/angular';
+import { AlertController, NavController } from '@ionic/angular';
 import { Ifilter } from '../interfaces/ifilter';
 
 @Component({
@@ -54,7 +54,7 @@ export class HomePage implements OnInit {
   //   }
   // ];
 
-  constructor(private carService: CarsService, private alertController: AlertController) {
+  constructor(private carService: CarsService, private alertController: AlertController, private navCtrl: NavController) {
 
     // get car list
     carService.getCars().subscribe({
@@ -164,5 +164,12 @@ export class HomePage implements OnInit {
         console.log(err);
       }
     });
+  }
+
+  navToMap() {
+    // this.router.navigate(['/gmap']);
+    this.navCtrl.navigateForward('tabs/gmap');
+    // this.navCtrl.navigateBack('/gmap');
+
   }
 }

@@ -6,7 +6,23 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-searchbar color="light" placeholder="Enter a pickup location"></ion-searchbar>
+  <ion-toolbar color="light">
+
+    <ion-grid>
+      <ion-row>
+        <ion-col class="ion-no-padding">
+          <ion-searchbar color="light" placeholder="Enter a pickup location"></ion-searchbar>
+        </ion-col>
+        <ion-col size="auto" class="ion-no-padding">
+          <ion-button fill="clear" class="ion-no-padding" (click)="navToMap()">
+            <ion-icon id="mapicon" name="location-outline" class="ion-float-right" size="large"
+              color="primary"></ion-icon>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+  </ion-toolbar>
 
   <ion-toolbar color="light">
     <ion-buttons slot="start">
