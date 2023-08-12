@@ -10,18 +10,48 @@ import { Icar } from 'src/app/interfaces/icar';
 })
 export class CardetailPage implements OnInit {
 
-  car!: Icar;
+  car: Icar = {
+    car_id: 0,
+    location: '',
+    available_time: new Date('2021-02-21 9:00:00'),
+    price: 0,
+    car_type: '',
+    fuel_type: '',
+    vendor: {
+      vendor_id: 0,
+      vendor_name: '',
+      phone: '',
+      email: '',
+      location: '',
+      description: ''
+    },
+    make: '',
+    model: '',
+    mileage: 0,
+    status: '',
+    candition: '',
+    car_images: [{
+      image_id: 0,
+      car_id: 0,
+      image_name: '',
+      path: '',
+    }],
+    ordertimes: 0,
+    lat: 0,
+    lng: 0
+  };
+
+  carId!: string | null;
 
   constructor(private route: ActivatedRoute, private carsService: CarsService) {
-    // Get task id from url
-    let carId = route.snapshot.paramMap.get('car_id');
+    // Get car_id from url
+    this.carId = route.snapshot.paramMap.get('car_id');
 
-    if (carId !== null) {
-      // Get task from DB and pre-populate from with the data
-      carsService.getCar(parseInt(carId)).subscribe({
+    if (this.carId !== null) {
+      this.carsService.getCar(parseInt(this.carId)).subscribe({
         next: (result) => {
           this.car = result;
-          console.log(this.car);
+          // console.log(this.car);
         }
       });
     }

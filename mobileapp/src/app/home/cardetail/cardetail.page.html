@@ -6,43 +6,59 @@
 
 <ion-content [fullscreen]="true">
 
-  <!-- <ion-grid>
+  <ion-grid>
+
+    <ion-row>
+      <ion-col>
+        <ion-img *ngIf="car.car_images[0]; else noImage"
+          src="{{ car.car_images[0].path}}" alt="Car Image"></ion-img>
+        <ng-template #noImage>
+          <ion-img src="assets/cars/default-car.jpg" alt="Car Image"></ion-img>
+        </ng-template>        
+      </ion-col>
+    </ion-row>
     <ion-row>
       <ion-col size="auto">
         <ion-text color="primary">
-          ${{ car?.price }}
+          ${{ car.price }}
         </ion-text>
       </ion-col>
     </ion-row>
     <ion-row>
-      <ion-col class="ion-no-padding">
-        Make: {{ car?.make }}
+      <ion-col>
+        Make: {{ car.make }}
       </ion-col>
     </ion-row>
     <ion-row>
-      <ion-col class="ion-no-padding">
-        Model: {{ car?.model }}
+      <ion-col>
+        Model: {{ car.model }}
       </ion-col>
     </ion-row>
     <ion-row>
-      <ion-col class="ion-no-padding">
-        Pick up at: {{ car?.location }}
+      <ion-col>
+        Pick up at: {{ car.location }}
       </ion-col>
     </ion-row>
     <ion-row>
-      <ion-col class="ion-no-padding">
-        Car Type: {{ car?.car_type }}
+      <ion-col>
+        Car Type: {{ car.car_type }}
       </ion-col>
     </ion-row>
     <ion-row>
-      <ion-col class="ion-no-padding">
-        Fuel Type: {{ car?.fuel_type }}
+      <ion-col>
+        Fuel Type: {{ car.fuel_type }}
       </ion-col>
     </ion-row>
     <ion-row>
-      <ion-col class="ion-no-padding">
-        Mileage: {{ car?.mileage }}
+      <ion-col>
+        Mileage: {{ car.mileage }}
       </ion-col>
     </ion-row>
-  </ion-grid> -->
+    <ion-row>
+      <ion-col>
+        Condition: {{ car.candition }}
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-button>Order</ion-button>
 </ion-content>

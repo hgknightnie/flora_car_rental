@@ -132,7 +132,7 @@ export class HomePage implements OnInit {
           }
         },
         {
-          text: 'Ok',
+          text: 'Show Result',
           cssClass: 'alert-button-confirm',
           handler: (alertData) => {
             if(alertData) {
