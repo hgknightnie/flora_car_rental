@@ -1,64 +1,87 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>cardetail</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
+  <swiper-container #swiper [loop]="true" [pagination]="true" [zoom]="true">
+    <swiper-slide *ngFor="let image of car?.car_images">
+      <div class="swiper-zoom-container">
+        <img [src]="image.path" />
+      </div>
+    </swiper-slide>
+  </swiper-container>
 
   <ion-grid>
-
     <ion-row>
       <ion-col>
-        <ion-img *ngIf="car.car_images[0]; else noImage"
-          src="{{ car.car_images[0].path}}" alt="Car Image"></ion-img>
-        <ng-template #noImage>
-          <ion-img src="assets/cars/default-car.jpg" alt="Car Image"></ion-img>
-        </ng-template>        
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col size="auto">
-        <ion-text color="primary">
-          ${{ car.price }}
+        <ion-text>
+          <span class="price_text">${{ car?.price }} </span><span>/day</span>
         </ion-text>
       </ion-col>
+      <ion-col size="auto">
+        <ion-button fill="solid">Order</ion-button>
+      </ion-col>
+
     </ion-row>
     <ion-row>
+      <ion-col size="3" size-sm="2">
+        Make:
+      </ion-col>
       <ion-col>
-        Make: {{ car.make }}
+        {{ car?.make }}
       </ion-col>
     </ion-row>
     <ion-row>
+      <ion-col size="3" size-sm="2">
+        Model:
+      </ion-col>
       <ion-col>
-        Model: {{ car.model }}
+        {{ car?.model }}
       </ion-col>
     </ion-row>
     <ion-row>
+      <ion-col size="3" size-sm="2">
+        Location: 
+      </ion-col>
       <ion-col>
-        Pick up at: {{ car.location }}
+        {{ car?.location }}
       </ion-col>
     </ion-row>
     <ion-row>
+      <ion-col size="3" size-sm="2">
+        Car Type: 
+      </ion-col>
       <ion-col>
-        Car Type: {{ car.car_type }}
+        {{ car?.car_type }}
       </ion-col>
     </ion-row>
     <ion-row>
+      <ion-col size="3" size-sm="2">
+        Fuel Type: 
+      </ion-col>
       <ion-col>
-        Fuel Type: {{ car.fuel_type }}
+        {{ car?.fuel_type }}
       </ion-col>
     </ion-row>
     <ion-row>
+      <ion-col size="3" size-sm="2">
+        Vendor: 
+      </ion-col>
       <ion-col>
-        Mileage: {{ car.mileage }}
+        {{ car?.vendor?.vendor_name }}
       </ion-col>
     </ion-row>
     <ion-row>
+      <ion-col size="3" size-sm="2">
+        Mileage: 
+      </ion-col>
       <ion-col>
-        Condition: {{ car.candition }}
+        {{ car?.mileage }}
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="3" size-sm="2">
+        Condition: 
+      </ion-col>
+      <ion-col>
+        {{ car?.candition }}
       </ion-col>
     </ion-row>
   </ion-grid>
-  <ion-button>Order</ion-button>
 </ion-content>

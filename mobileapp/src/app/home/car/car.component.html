@@ -57,7 +57,8 @@
       </ion-row>
     </ion-grid>
 
-    <ion-button fill="outline" size="small" id="viewbtn" [routerLink]="['/tabs/home/cardetail', car.car_id]">View</ion-button>
+    <!-- <ion-button fill="outline" size="small" id="viewbtn" [routerLink]="['/tabs/home/cardetail', car.car_id]">View</ion-button> -->
+    <ion-button fill="outline" size="small" id="viewbtn" (click)="viewDetail(car.car_id)">View</ion-button>
   </ion-card-content>
   
 

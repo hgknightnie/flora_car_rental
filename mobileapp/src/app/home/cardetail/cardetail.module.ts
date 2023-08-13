@@ -8,6 +8,8 @@ import { CardetailPageRoutingModule } from './cardetail-routing.module';
 
 import { CardetailPage } from './cardetail.page';
 
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -15,6 +17,7 @@ import { CardetailPage } from './cardetail.page';
     IonicModule,
     CardetailPageRoutingModule
   ],
-  declarations: [CardetailPage]
+  declarations: [CardetailPage],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class CardetailPageModule {}
