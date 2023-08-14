@@ -36,11 +36,14 @@ router.get("/", (req, res) => {
     }
     let carType = req.query.car_type;
     if(carType !== undefined) {
-        options.where.car_type = carType;
+        //options.where.car_type = carType;
+        const arrCarType = carType.split(',');
+        options.where.car_type = {[Op.in] : arrCarType};
     }
     let fuelType = req.query.fuel_type;
     if(fuelType !== undefined) {
-        options.where.fuel_type = fuelType;
+        const arrFuelType = fuelType.split(',');
+        options.where.fuel_type = {[Op.in] : arrFuelType};
     }
     let price = req.query.price;
     if(price !== undefined) {

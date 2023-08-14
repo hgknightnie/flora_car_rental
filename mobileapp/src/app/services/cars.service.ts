@@ -21,7 +21,7 @@ export class CarsService {
     return this.http.get<Icar []>(`http://localhost:3000/cars?order=${order}&direction=${direction}`);
   }
 
-  getCarsByFilter(fileName: string, value: string) {
-    return this.http.get<Icar []>(`http://localhost:3000/cars?${fileName}=${value}`);
+  getCarsByFilter(fieldName: string, values: string) {
+    return this.http.get<Icar []>(`http://localhost:3000/cars?${fieldName}=${values}`);
   }
 }

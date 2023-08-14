@@ -1,8 +1,8 @@
 import { CarsService } from './../services/cars.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Icar } from '../interfaces/icar';
-import { AlertController, NavController } from '@ionic/angular';
-import { Ifilter } from '../interfaces/ifilter';
+import { AlertController, IonModal, NavController, ToggleCustomEvent } from '@ionic/angular';
+import { OverlayEventDetail } from '@ionic/core/components';
 
 @Component({
   selector: 'app-home',
@@ -11,48 +11,37 @@ import { Ifilter } from '../interfaces/ifilter';
 })
 export class HomePage implements OnInit {
 
+  @ViewChild(IonModal) modal!: IonModal;
+
+  filter = {
+    car_type: {
+      is_check: false,
+      sedan: false,
+      truck: false,
+      suv: false,
+      van: false
+    },
+    fuel_type: {
+      is_check: false,
+      gasoline: false,
+      electric: false,
+      hybrid: false
+    },
+    price: {
+      is_check: false,
+      low_price: 0,
+      high_price: 100
+    }
+  }
+
+  carTypeGroupDisabled = true;
+  fuelTypeGroupDisabled = true;
+  priceGroupDisabled = true;
+
   cars!: Icar[];
 
   priceDirection = 'desc';
   priceIconName = 'chevron-down-outline';
-
-  // public alertButtons = [
-  //   {
-  //     text: 'Cancel',
-  //     cssClass: 'alert-button-cancel',
-  //   },
-  //   {
-  //     text: 'OK',
-  //     cssClass: 'alert-button-confirm',
-  //   },
-  // ];
-
-  // public alertInputs = [
-  //   {
-  //     name: 'typeName',
-  //     label: 'Sedan',
-  //     type: 'checkbox',
-  //     value: 'sedan',
-  //   },
-  //   {
-  //     name: 'typeName',
-  //     label: 'Truck',
-  //     type: 'checkbox',
-  //     value: 'truck',
-  //   },
-  //   {
-  //     name: 'typeName',
-  //     label: 'SUV',
-  //     type: 'checkbox',
-  //     value: 'suv',
-  //   },
-  //   {
-  //     name: 'typeName',
-  //     label: 'Van',
-  //     type: 'checkbox',
-  //     value: 'van',
-  //   }
-  // ];
 
   constructor(private carService: CarsService, private alertController: AlertController, private navCtrl: NavController) {
 
@@ -93,67 +82,6 @@ export class HomePage implements OnInit {
     });
   }
 
-  async showAlert() {
-    const alert = await this.alertController.create({
-      header: 'Please select car type',
-      inputs: [
-        {
-          name: 'typeName',
-          label: 'Sedan',
-          type: 'radio',
-          value: 'sedan',
-        },
-        {
-          name: 'typeName',
-          label: 'Truck',
-          type: 'radio',
-          value: 'truck',
-        },
-        {
-          name: 'typeName',
-          label: 'SUV',
-          type: 'radio',
-          value: 'suv',
-        },
-        {
-          name: 'typeName',
-          label: 'Van',
-          type: 'radio',
-          value: 'van',
-        }
-      ],
-      buttons: [
-        {
-          text: 'Cancel',
-          role: 'cancel',
-          cssClass: 'alert-button-cancel',
-          handler: () => {
-            console.log('Confirm Cancel');
-          }
-        },
-        {
-          text: 'Show Result',
-          cssClass: 'alert-button-confirm',
-          handler: (alertData) => {
-            if(alertData) {
-              console.log(alertData);
-              this.filterList('car_type', alertData);
-            }
-            
-          }
-        }
-      ]
-    });
-
-    await alert.present();
-
-    // const result = await alert.onDidDismiss();
-
-    // console.log(result);
-
-    
-  }
-
   filterList(fileName: string, value: string) {
     this.carService.getCarsByFilter(fileName, value).subscribe({
       next: (results) => {
@@ -170,5 +98,99 @@ export class HomePage implements OnInit {
     this.navCtrl.navigateForward('tabs/gmap');
     // this.navCtrl.navigateBack('/gmap');
 
+  }
+
+  confirm() {
+    this.modal.dismiss(this.filter, 'confirm');
+  }
+
+  onWillDismiss(event: Event) {
+    const ev = event as CustomEvent<OverlayEventDetail<string>>;
+    let queryClause = '';
+    if (ev.detail.role === 'confirm') {
+      // console.log(ev.detail.data);
+
+      if(this.filter.car_type.is_check) {
+        if(this.filter.car_type.sedan) {
+          queryClause += "sedan,"
+        }
+        if(this.filter.car_type.truck) {
+          queryClause += "truck,"
+        }
+        if(this.filter.car_type.suv) {
+          queryClause += "suv,"
+        }
+        if(this.filter.car_type.van) {
+          queryClause += "van,"
+        }
+        if(queryClause !== '') {
+          queryClause = queryClause.substring(0, queryClause.lastIndexOf(','));
+        }
+        this.filterList('car_type', queryClause);
+      } else if(this.filter.fuel_type.is_check) {
+        if(this.filter.fuel_type.gasoline) {
+          queryClause += "gasoline,"
+        }
+        if(this.filter.fuel_type.electric) {
+          queryClause += "truck,"
+        }
+        if(this.filter.fuel_type.hybrid) {
+          queryClause += "suv,"
+        }
+        if(queryClause !== '') {
+          queryClause = queryClause.substring(0, queryClause.lastIndexOf(','));
+        }
+        console.log(queryClause);
+        this.filterList('fuel_type', queryClause);
+      } else if(this.filter.price.is_check) {
+        if(this.filter.price.low_price != null && this.filter.price.high_price !== null) {
+          queryClause = `${this.filter.price.low_price}|${this.filter.price.high_price}`;
+        }
+        this.filterList('price', queryClause);
+      }
+      console.log(queryClause);
+    }
+  }
+
+  catTypeChanged(event: Event) {
+    this.filter.fuel_type.is_check = false;
+    this.fuelTypeGroupDisabled = true;
+    this.filter.price.is_check = false;
+    this.priceGroupDisabled = true;
+
+    const ev = event as ToggleCustomEvent;
+    if(ev.detail.checked) {
+      this.carTypeGroupDisabled = false;
+    } else {
+      this.carTypeGroupDisabled = true;
+    }
+  }
+
+  fuelTypeChanged(event: Event) {
+    this.filter.car_type.is_check = false;
+    this.carTypeGroupDisabled = true;
+    this.filter.price.is_check = false;
+    this.priceGroupDisabled = true;
+
+    const ev = event as ToggleCustomEvent;
+    if(ev.detail.checked) {
+      this.fuelTypeGroupDisabled = false;
+    } else {
+      this.fuelTypeGroupDisabled = true;
+    }
+  }
+
+  priceTypeChanged(event: Event) {
+    this.filter.fuel_type.is_check = false;
+    this.fuelTypeGroupDisabled = true;
+    this.filter.car_type.is_check = false;
+    this.carTypeGroupDisabled = true;
+
+    const ev = event as ToggleCustomEvent;
+    if(ev.detail.checked) {
+      this.priceGroupDisabled = false;
+    } else {
+      this.priceGroupDisabled = true;
+    }
   }
 }

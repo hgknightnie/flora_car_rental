@@ -36,14 +36,94 @@
       <ion-button fill="clear" (click)="sortList('mileage', 'desc')">Mileage</ion-button>
     </ion-buttons>
     <ion-buttons slot="end">
-      <ion-button fill="solid" slot="end" (click)="showAlert()" id="car-filter">
+      <ion-button fill="solid" slot="end" id="open-modal">
         Filter
         <ion-icon name="caret-down-outline"></ion-icon>
       </ion-button>
-      <!-- <ion-alert trigger="car-filter" header="Select the Car Type" [buttons]="alertButtons"
-        [inputs]="alertInputs"></ion-alert> -->
     </ion-buttons>
   </ion-toolbar>
+
+  <ion-modal #modal trigger="open-modal" (willDismiss)="onWillDismiss($event)">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-buttons slot="start">
+            <ion-button (click)="modal.dismiss()">Cancel</ion-button>
+          </ion-buttons>
+          <div class="ion-text-center">
+            Filter the car list
+          </div>
+          <ion-button slot="end" fill="solid" (click)="confirm()" size="small">Show Result</ion-button>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="ion-padding">
+        <ion-grid>
+          <ion-row>
+            <ion-col class="group-row ion-margin-top">
+              <ion-toggle (ionChange)="catTypeChanged($event)" labelPlacement="end"
+                [(ngModel)]="filter.car_type.is_check">Car Type</ion-toggle>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col offset="1">
+              <ion-checkbox labelPlacement="end" value="sedan" [(ngModel)]="filter.car_type.sedan"
+                [disabled]="carTypeGroupDisabled">Sedan</ion-checkbox>
+            </ion-col>
+            <ion-col>
+              <ion-checkbox labelPlacement="end" value="truck" [(ngModel)]="filter.car_type.truck"
+                [disabled]="carTypeGroupDisabled">Truck</ion-checkbox>
+            </ion-col>
+            <ion-col>
+              <ion-checkbox labelPlacement="end" value="suv" [(ngModel)]="filter.car_type.suv"
+                [disabled]="carTypeGroupDisabled">SUV</ion-checkbox>
+            </ion-col>
+            <ion-col>
+              <ion-checkbox labelPlacement="end" value="van" [(ngModel)]="filter.car_type.van"
+                [disabled]="carTypeGroupDisabled">Van</ion-checkbox>
+            </ion-col>
+          </ion-row>
+          <ion-row class="group-row ion-margin-top">
+            <ion-col>
+              <ion-toggle (ionChange)="fuelTypeChanged($event)" labelPlacement="end"
+                [(ngModel)]="filter.fuel_type.is_check">Fuel Type</ion-toggle>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col offset="1">
+              <ion-checkbox labelPlacement="end" value="gasoline" [(ngModel)]="filter.fuel_type.gasoline"
+                [disabled]="fuelTypeGroupDisabled">Gasoline</ion-checkbox>
+            </ion-col>
+            <ion-col>
+              <ion-checkbox labelPlacement="end" value="electric" [(ngModel)]="filter.fuel_type.electric"
+                [disabled]="fuelTypeGroupDisabled">Electric</ion-checkbox>
+            </ion-col>
+            <ion-col>
+              <ion-checkbox labelPlacement="end" value="hybrid" [(ngModel)]="filter.fuel_type.hybrid"
+                [disabled]="fuelTypeGroupDisabled">Hybrid</ion-checkbox>
+            </ion-col>
+          </ion-row>
+          <ion-row class="group-row ion-margin-top">
+            <ion-col>
+              <ion-toggle (ionChange)="priceTypeChanged($event)" labelPlacement="end"
+                [(ngModel)]="filter.price.is_check">Price</ion-toggle>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col offset="1">
+              <ion-item>
+                <ion-input label="from" labelPlacement="stacked" type="text" placeholder="low price" [(ngModel)]="filter.price.low_price" [disabled]="priceGroupDisabled"></ion-input>
+              </ion-item>
+            </ion-col>
+            <ion-col>
+              <ion-item>
+                <ion-input label="to" labelPlacement="stacked"  type="text" placeholder="high price" [(ngModel)]="filter.price.high_price" [disabled]="priceGroupDisabled"></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
 
   <div *ngFor="let car_item of cars">
     <app-car [car]="car_item"></app-car>
