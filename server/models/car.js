@@ -50,7 +50,7 @@ const Car = config.define("car", {
         type: Sequelize.STRING,
         allowNull: false
     },
-    condition: {
+    description: {
         type: Sequelize.STRING,
         allowNull: true
     },

@@ -132,10 +132,10 @@ export class HomePage implements OnInit {
           queryClause += "gasoline,"
         }
         if(this.filter.fuel_type.electric) {
-          queryClause += "truck,"
+          queryClause += "electric,"
         }
         if(this.filter.fuel_type.hybrid) {
-          queryClause += "suv,"
+          queryClause += "hybrid,"
         }
         if(queryClause !== '') {
           queryClause = queryClause.substring(0, queryClause.lastIndexOf(','));

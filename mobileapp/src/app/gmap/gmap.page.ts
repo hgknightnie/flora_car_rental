@@ -158,10 +158,10 @@ export class GmapPage implements OnDestroy  {
       },
       title: `${car.make} - ${car.model}`,
       snippet: `[mileage:${car.mileage} km] [car type:${car.car_type}] [fule type:${car.fuel_type}]`,
-      iconUrl: `/assets/icon/cars/${car.make}.svg`,
+        iconUrl: `/assets/icon/cars/${car.car_type}.png`,
       iconSize: {
-        width: 32,
-        height: 32
+        width: 36,
+        height: 36
       },
       car: car
     }));

@@ -10,7 +10,7 @@ create table cars (
 	model varchar(20) not null,
 	mileage int not null,
 	status enum('avaliable', 'booked', 'rented') not null default 'avaliable',
-	condition varchar(500),
+	description varchar(500),
 	ordertimes int default 0 not null,
 	lat float,
 	lng float,
@@ -83,13 +83,29 @@ insert into vendors
 (vendor_name, phone, email, location, description)
 values('neil', '(403)888-8888', 'neil@gmail.com', '7652 26 ave sw', 'a reliable personal vendor');
 
+insert into vendors
+(vendor_name, phone, email, location, description)
+values('neil', '(403)888-8888', 'neil@gmail.com', '7652 26 ave sw', 'a reliable personal vendor');
+
 insert into cars
-(location, available_time, price, car_type, fuel_type, vendor_id, make, model, mileage, status, candition)
+(location, available_time, price, car_type, fuel_type, vendor_id, make, model, mileage, status, description)
 values('7652 26 ave sw', null, 50, 'sedan', 'gasoline', 1, 'toyota', 'corolla', 10000, 'avaliable', 'the toyota corolla is a trusted and economical compact sedan, known for its reliability and fuel efficiency. it offers practicality and a comfortable ride, making it a popular choice for daily commuting and family transportation.');
 
 insert into cars
-(location, available_time, price, car_type, fuel_type, vendor_id, make, model, mileage, status, candition)
+(location, available_time, price, car_type, fuel_type, vendor_id, make, model, mileage, status, description)
 values('7652 26 ave sw', null, 60, 'sedan', 'gasoline', 1, 'audi', 'a4', 5000, 'avaliable', 'the audi a4 is a stylish and tech-savvy sedan that emphasizes modern design and advanced technology. its well-crafted interior, refined ride, and array of high-tech features contribute to its appeal among luxury car enthusiasts.');
+
+insert into cars
+(location, available_time, price, car_type, fuel_type, vendor_id, make, model, mileage, status, description)
+values('7652 26 ave sw', null, 70, 'sedan', 'gasoline', 1, 'bmw', '3 series', 9000, 'avaliable', 'the bmw 3 series is a luxurious and sporty sedan that sets the standard for driving dynamics in its class. it combines elegant design, advanced technology, and responsive engines to provide a refined yet engaging driving journey.');
+
+insert into cars
+(location, available_time, price, car_type, fuel_type, vendor_id, make, model, mileage, status, description)
+values('7652 26 ave sw', null, 75, 'van', 'hybrid', 1, 'nissan', 'altima', 25000, 'avaliable', 'the nissan altima is a comfortable midsize sedan offering a balance of practicality and refined features. known for its smooth ride, spacious cabin, and user-friendly technology, the altima is a reliable option for daily commuting and family travel');
+
+insert into cars
+(location, available_time, price, car_type, fuel_type, vendor_id, make, model, mileage, status, description)
+values('7652 26 ave sw', null, 95, 'suv', 'electric', 1, 'chevrolet', 'corvette', 12000, 'avaliable', 'the chevrolet corvette is a legendary sports car that boasts sleek aesthetics and exhilarating speed. with its potent v8 engines, precise handling, and driver-focused cockpit, the corvette offers an extraordinary driving experience');
 
 insert into customers
 (customer_name, phone, email)
