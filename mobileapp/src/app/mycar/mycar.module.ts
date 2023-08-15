@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { MycarPageRoutingModule } from './mycar-routing.module';
 
 import { MycarPage } from './mycar.page';
+import { GmapPageModule } from '../gmap/gmap.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    MycarPageRoutingModule
+    MycarPageRoutingModule,
+    GmapPageModule
   ],
   declarations: [MycarPage]
 })

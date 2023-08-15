@@ -10,7 +10,7 @@ create table cars (
 	model varchar(20) not null,
 	mileage int not null,
 	status enum('avaliable', 'booked', 'rented') not null default 'avaliable',
-	candition varchar(500),
+	condition varchar(500),
 	ordertimes int default 0 not null,
 	lat float,
 	lng float,

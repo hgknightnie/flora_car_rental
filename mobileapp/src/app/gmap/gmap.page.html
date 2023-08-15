@@ -1,20 +1,6 @@
 <ion-content [fullscreen]="true">
-  <ion-grid>
-    <ion-row>
-      <ion-col size="12">
-        <capacitor-google-map #map id="google-map"></capacitor-google-map>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col size="12">
-        <ion-item>
-          <ion-lable>
-            <h1>{{ heading }}</h1>
-            {{ description }}
-          </ion-lable>
-        </ion-item>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-
+  <capacitor-google-map #map id="google-map"></capacitor-google-map>
+  <div *ngIf="selectedCar">
+    <app-car [car]="selectedCar"></app-car>
+  </div>
 </ion-content>

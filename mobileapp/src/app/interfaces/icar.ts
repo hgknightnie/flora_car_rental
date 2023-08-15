@@ -13,7 +13,7 @@ export interface Icar {
     model: string;
     mileage: number;
     status: string;
-    candition: string;
+    condition: string;
     car_images: ICarImage[]; 
     ordertimes: number;
     lat: number;

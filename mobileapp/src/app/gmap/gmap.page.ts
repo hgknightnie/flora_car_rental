@@ -20,10 +20,6 @@ export class GmapPage implements OnDestroy  {
   // the generated Google Map instance in the class
   public map!: GoogleMap;
 
-  public heading: string | null = null;
-
-  public description: string | null = null;
-
   // stores the Google Map Markers that have been generated
   private markers: Array<IMarkerEl> = [];
 
@@ -33,6 +29,7 @@ export class GmapPage implements OnDestroy  {
   private calgaryLocation!: ICityLocation;
 
   cars!: Icar[];
+  selectedCar! : Icar;
 
   constructor(private carService: CarsService) {
 
@@ -79,8 +76,8 @@ export class GmapPage implements OnDestroy  {
     this.location(this.calgaryLocation);
     
     // Render to component view
-    this.heading = this.calgaryLocation.city;
-    this.description = this.calgaryLocation.description;
+    // this.heading = this.calgaryLocation.city;
+    // this.description = this.calgaryLocation.description;
   }
 
   // initialise the Google Map and provide the necessary configurations/parameters
@@ -147,8 +144,9 @@ export class GmapPage implements OnDestroy  {
     });
 
     // Render to component view
-    this.heading = summary[0].title;
-    this.description = summary[0].snippet;
+    // this.heading = summary[0].title;
+    // this.description = summary[0].car.condition;
+    this.selectedCar = summary[0].car;
   }
 
   // Generates the individual map markers from the supplied locations
@@ -164,7 +162,8 @@ export class GmapPage implements OnDestroy  {
       iconSize: {
         width: 32,
         height: 32
-      }
+      },
+      car: car
     }));
   }
 

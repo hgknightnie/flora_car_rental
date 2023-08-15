@@ -23,7 +23,7 @@ make:Ford
 model:Mustang
 mileage:35001
 status:avaliable
-candition:The Ford Mustang is an iconic American muscle car that combines classic design with powerful performance. With its distinct style and robust engines, the Mustang delivers thrilling acceleration and a true sense of driving excitement.
+condition:The Ford Mustang is an iconic American muscle car that combines classic design with powerful performance. With its distinct style and robust engines, the Mustang delivers thrilling acceleration and a true sense of driving excitement.
 ```
 # Update a car
 ## method: patch

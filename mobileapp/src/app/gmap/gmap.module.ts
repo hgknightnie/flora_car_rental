@@ -9,6 +9,7 @@ import { GmapPageRoutingModule } from './gmap-routing.module';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { GmapPage } from './gmap.page';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { GmapPage } from './gmap.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    GmapPageRoutingModule
+    GmapPageRoutingModule,
+    SharedModule
   ],
   declarations: [GmapPage],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
