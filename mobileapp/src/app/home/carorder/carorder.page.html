@@ -1,0 +1,17 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Order the Car</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div *ngIf="isDataAvailable">
+    <app-car [car]="car"></app-car>
+  </div>
+
+  <form [formGroup]="carForm">
+    <ion-item>
+      <ion-input label="Make" labelPlacement="floating" formControlName="make"></ion-input>
+    </ion-item>
+  </form>
+</ion-content>

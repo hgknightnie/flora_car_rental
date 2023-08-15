@@ -11,11 +11,11 @@
     <ion-row>
       <ion-col>
         <ion-text>
-          <span class="price_text">${{ car?.price }} </span><span>/day</span>
+          <span class="price_text">${{ car.price }} </span><span>/day</span>
         </ion-text>
       </ion-col>
       <ion-col size="auto">
-        <ion-button fill="solid">Order</ion-button>
+        <ion-button fill="solid" (click)="orderCar(car.car_id)">Order</ion-button>
       </ion-col>
 
     </ion-row>
@@ -24,7 +24,7 @@
         Make:
       </ion-col>
       <ion-col>
-        {{ car?.make }}
+        {{ car.make }}
       </ion-col>
     </ion-row>
     <ion-row>
@@ -32,7 +32,7 @@
         Model:
       </ion-col>
       <ion-col>
-        {{ car?.model }}
+        {{ car.model }}
       </ion-col>
     </ion-row>
     <ion-row>
@@ -40,7 +40,7 @@
         Location: 
       </ion-col>
       <ion-col>
-        {{ car?.location }}
+        {{ car.location }}
       </ion-col>
     </ion-row>
     <ion-row>
@@ -48,7 +48,7 @@
         Car Type: 
       </ion-col>
       <ion-col>
-        {{ car?.car_type }}
+        {{ car.car_type }}
       </ion-col>
     </ion-row>
     <ion-row>
@@ -56,7 +56,7 @@
         Fuel Type: 
       </ion-col>
       <ion-col>
-        {{ car?.fuel_type }}
+        {{ car.fuel_type }}
       </ion-col>
     </ion-row>
     <ion-row>
@@ -64,7 +64,7 @@
         Vendor: 
       </ion-col>
       <ion-col>
-        {{ car?.vendor?.vendor_name }}
+        {{ car.vendor.vendor_name }}
       </ion-col>
     </ion-row>
     <ion-row>
@@ -72,7 +72,7 @@
         Mileage: 
       </ion-col>
       <ion-col>
-        {{ car?.mileage }}
+        {{ car.mileage }}
       </ion-col>
     </ion-row>
     <ion-row>
@@ -80,7 +80,7 @@
         Condition: 
       </ion-col>
       <ion-col>
-        {{ car?.candition }}
+        {{ car.candition }}
       </ion-col>
     </ion-row>
   </ion-grid>

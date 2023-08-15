@@ -11,6 +11,10 @@ const routes: Routes = [
   {
     path: 'cardetail/:car_id',
     loadChildren: () => import('./cardetail/cardetail.module').then( m => m.CardetailPageModule)
+  },
+  {
+    path: 'carorder/:car_id',
+    loadChildren: () => import('./carorder/carorder.module').then( m => m.CarorderPageModule)
   }
 ];
 
