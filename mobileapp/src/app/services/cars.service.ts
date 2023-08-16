@@ -24,4 +24,8 @@ export class CarsService {
   getCarsByFilter(fieldName: string, values: string) {
     return this.http.get<Icar []>(`http://localhost:3000/cars?${fieldName}=${values}`);
   }
+
+  getOrder(orderId: number) {
+    return this.http.get<Icar []>(`http://localhost:3000/orders?${orderId}`);
+  }
 }

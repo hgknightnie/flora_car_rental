@@ -9,9 +9,38 @@
     <app-car [car]="car"></app-car>
   </div>
 
-  <form [formGroup]="carForm">
+  <form [formGroup]="orderForm">
     <ion-item>
-      <ion-input label="Make" labelPlacement="floating" formControlName="make"></ion-input>
+      <ion-input label="Pick up date:" type="datetime-local" labelPlacement="floating" formControlName="pickup_date"
+        [value]="pickup_date.value | date:'yyyy-MM-ddTHH:mm'" [min]="strNow | date:'yyyy-MM-ddTHH:mm'"
+        (ionChange)="dateChange($event)"></ion-input>
+    </ion-item>
+    <ion-item>
+      <div *ngIf="isDataAvailable">
+        <ion-input label="Drop off at:" labelPlacement="floating" formControlName="dropoff_location"></ion-input>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-input label="Drop off date:" type="datetime-local" labelPlacement="floating" formControlName="dropoff_date"
+        [value]="dropoff_date.value | date:'yyyy-MM-ddTHH:mm'" [min]="strNow | date:'yyyy-MM-ddTHH:mm'"
+        (ionChange)="dateChange($event)"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input label="Mileage limit:" formControlName="mileage_limit"></ion-input> km
+    </ion-item>
+    <!-- <ion-item>
+      <ion-input label="Total price:" labelPlacement="floating" formControlName="total_price"></ion-input>
+    </ion-item> -->
+    <ion-item>
+      <ion-label>Total Price:</ion-label> <ion-label color="primary" slot="end"
+        class="price_text">${{total_price.value}}</ion-label>
     </ion-item>
   </form>
+
+  <div id="btndiv">
+    <ion-button [disabled]="orderForm.invalid" (click)="onSubmit()">Submit</ion-button>
+  </div>
+
+  
+
 </ion-content>
