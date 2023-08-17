@@ -1,3 +1,9 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-img src="assets/logo.png" alt="Flora Car Rental"></ion-img>
+  </ion-toolbar>
+</ion-header>
+
 <ion-content [fullscreen]="true">
   <div *ngIf="car.car_images[0]; else noImage">
     <swiper-container #swiper [loop]="true" [pagination]="true" [zoom]="true">

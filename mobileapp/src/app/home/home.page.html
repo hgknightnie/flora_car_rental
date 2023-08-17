@@ -1,7 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>Flora Car Rental</ion-title>
-    <ion-title size="small">The trusted car rental platform</ion-title>
+    <ion-img src="assets/logo.png" alt="Flora Car Rental"></ion-img>
   </ion-toolbar>
 </ion-header>
 
@@ -43,7 +42,8 @@
     </ion-buttons>
   </ion-toolbar>
 
-  <ion-modal #modal trigger="open-modal" (willDismiss)="onWillDismiss($event)" [enterAnimation]="enterAnimation" [leaveAnimation]="leaveAnimation">
+  <ion-modal #modal trigger="open-modal" (willDismiss)="onWillDismiss($event)" [enterAnimation]="enterAnimation"
+    [leaveAnimation]="leaveAnimation">
     <ng-template>
       <ion-header>
         <ion-toolbar>
@@ -111,12 +111,14 @@
           <ion-row>
             <ion-col offset="1">
               <ion-item>
-                <ion-input label="from" labelPlacement="stacked" type="text" placeholder="low price" [(ngModel)]="filter.price.low_price" [disabled]="priceGroupDisabled"></ion-input>
+                <ion-input label="from" labelPlacement="stacked" type="text" placeholder="low price"
+                  [(ngModel)]="filter.price.low_price" [disabled]="priceGroupDisabled"></ion-input>
               </ion-item>
             </ion-col>
             <ion-col>
               <ion-item>
-                <ion-input label="to" labelPlacement="stacked"  type="text" placeholder="high price" [(ngModel)]="filter.price.high_price" [disabled]="priceGroupDisabled"></ion-input>
+                <ion-input label="to" labelPlacement="stacked" type="text" placeholder="high price"
+                  [(ngModel)]="filter.price.high_price" [disabled]="priceGroupDisabled"></ion-input>
               </ion-item>
             </ion-col>
           </ion-row>
