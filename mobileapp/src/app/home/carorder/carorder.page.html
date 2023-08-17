@@ -12,7 +12,7 @@
   <form [formGroup]="orderForm">
     <ion-item>
       <ion-input label="Pick up date:" type="datetime-local" labelPlacement="floating" formControlName="pickup_date"
-        [value]="pickup_date" [min]="strNow | date:'yyyy-MM-ddTHH:mm'"
+      [value]="dropoff_date.value | date:'yyyy-MM-ddTHH:mm'"  [min]="strNow | date:'yyyy-MM-ddTHH:mm'"
         (ionChange)="dateChange($event)"></ion-input>
     </ion-item>
     <ion-item>
