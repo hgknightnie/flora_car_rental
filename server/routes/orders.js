@@ -20,4 +20,14 @@ router.get("/:order_id", (req, res) => {
     });
 });
 
+// New Order
+router.post('/',function(req,res) {
+    let formData = req.body;
+    Order.create(formData).then((results)=>{
+        res.status(200).send(results);
+    }).catch((err)=>{
+        res.status(500).send(err);
+    });
+});
+
 module.exports = router;

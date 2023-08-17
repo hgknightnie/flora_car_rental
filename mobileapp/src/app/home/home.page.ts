@@ -1,7 +1,7 @@
 import { CarsService } from './../services/cars.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Icar } from '../interfaces/icar';
-import { AlertController, IonModal, NavController, ToggleCustomEvent } from '@ionic/angular';
+import { AlertController, AnimationController, IonModal, NavController, ToggleCustomEvent } from '@ionic/angular';
 import { OverlayEventDetail } from '@ionic/core/components';
 
 @Component({
@@ -43,7 +43,7 @@ export class HomePage implements OnInit {
   priceDirection = 'desc';
   priceIconName = 'chevron-down-outline';
 
-  constructor(private carService: CarsService, private alertController: AlertController, private navCtrl: NavController) {
+  constructor(private carService: CarsService, private alertController: AlertController, private navCtrl: NavController, private animationCtrl: AnimationController) {
 
     // get car list
     carService.getCars().subscribe({
@@ -193,4 +193,34 @@ export class HomePage implements OnInit {
       this.priceGroupDisabled = true;
     }
   }
+
+  // filter page animation enter
+  enterAnimation = (baseEl: HTMLElement) => {
+    const root = baseEl.shadowRoot!;
+
+    const backdropAnimation = this.animationCtrl
+      .create()
+      .addElement(root.querySelector('ion-backdrop')!)
+      .fromTo('opacity', '0.01', 'var(--backdrop-opacity)');
+
+    const wrapperAnimation = this.animationCtrl
+      .create()
+      .addElement(root.querySelector('.modal-wrapper')!)
+      .keyframes([
+        { offset: 0, opacity: '0', transform: 'scale(0)' },
+        { offset: 1, opacity: '0.99', transform: 'scale(1)' },
+      ]);
+
+    return this.animationCtrl
+      .create()
+      .addElement(baseEl)
+      .easing('ease-out')
+      .duration(350)
+      .addAnimation([backdropAnimation, wrapperAnimation]);
+  };
+
+  // filter page animation leave
+  leaveAnimation = (baseEl: HTMLElement) => {
+    return this.enterAnimation(baseEl).direction('reverse');
+  };
 }

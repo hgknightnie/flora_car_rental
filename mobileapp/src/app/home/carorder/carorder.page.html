@@ -12,7 +12,7 @@
   <form [formGroup]="orderForm">
     <ion-item>
       <ion-input label="Pick up date:" type="datetime-local" labelPlacement="floating" formControlName="pickup_date"
-        [value]="pickup_date.value | date:'yyyy-MM-ddTHH:mm'" [min]="strNow | date:'yyyy-MM-ddTHH:mm'"
+        [value]="pickup_date" [min]="strNow | date:'yyyy-MM-ddTHH:mm'"
         (ionChange)="dateChange($event)"></ion-input>
     </ion-item>
     <ion-item>
@@ -26,7 +26,7 @@
         (ionChange)="dateChange($event)"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-input label="Mileage limit:" formControlName="mileage_limit"></ion-input> km
+      <ion-input label="Mileage limit:" [readonly]="true" formControlName="mileage_limit"></ion-input> km
     </ion-item>
     <!-- <ion-item>
       <ion-input label="Total price:" labelPlacement="floating" formControlName="total_price"></ion-input>

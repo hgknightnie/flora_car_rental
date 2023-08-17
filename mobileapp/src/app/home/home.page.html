@@ -43,11 +43,11 @@
     </ion-buttons>
   </ion-toolbar>
 
-  <ion-modal #modal trigger="open-modal" (willDismiss)="onWillDismiss($event)">
+  <ion-modal #modal trigger="open-modal" (willDismiss)="onWillDismiss($event)" [enterAnimation]="enterAnimation" [leaveAnimation]="leaveAnimation">
     <ng-template>
       <ion-header>
         <ion-toolbar>
-          <ion-buttons slot="start">
+          <ion-buttons slot="start" size="small">
             <ion-button (click)="modal.dismiss()">Cancel</ion-button>
           </ion-buttons>
           <div class="ion-text-center">

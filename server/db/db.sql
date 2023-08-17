@@ -48,12 +48,12 @@ create table orders (
 	customer_id int not null,
 	car_id int not null,
 	pickup_location varchar(100) not null,
-	pickup_date date not null,
+	pickup_date datetime not null,
 	dropoff_location varchar(100) not null,
-	dropoff_date date not null,
+	dropoff_date datetime not null,
 	total_price float not null,
 	mileage_limit int,
-	order_date date not null,
+	order_date datetime not null,
 	primary key (order_id)
 );
 

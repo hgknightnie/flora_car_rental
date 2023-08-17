@@ -2,6 +2,7 @@ import { Iorder } from './../../interfaces/iorder';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { AlertController } from '@ionic/angular';
 import { Icar } from 'src/app/interfaces/icar';
 import { Icustomer } from 'src/app/interfaces/icustomer';
 import { CarsService } from 'src/app/services/cars.service';
@@ -23,9 +24,9 @@ export class CarorderPage implements OnInit {
     phone: '(403)777-7777',
     email: 'johnwick@gmail.com'
   }
-  strNow = new Date().toISOString().substring(0, new Date().toISOString().lastIndexOf(':'));
+  strNow = new Date().toISOString().slice(0, 16);
 
-  constructor(private fb: FormBuilder, private route: ActivatedRoute, private carsService: CarsService) {
+  constructor(private fb: FormBuilder, private route: ActivatedRoute, private carsService: CarsService, private alertController: AlertController) {
     this.orderForm = fb.group({
       customer_id: ['', [Validators.required]],
       car_id: ['', [Validators.required]],
@@ -33,8 +34,9 @@ export class CarorderPage implements OnInit {
       pickup_date: ['', [Validators.required]],
       dropoff_date: ['', [Validators.required]],
       dropoff_location: ['', [Validators.required]],
-      mileage_limit: ['500', [Validators.required]],
+      mileage_limit: ['', [Validators.required]],
       total_price: ['', [Validators.required]],
+      order_date: ['', [Validators.required]]
     });
 
     // Get car_id from url
@@ -47,6 +49,7 @@ export class CarorderPage implements OnInit {
       next: (result) => {
         // console.log(result);
         this.car = result;
+
 
         this.order = {
           order_id: null,
@@ -66,7 +69,7 @@ export class CarorderPage implements OnInit {
       }
     });
 
-    this.orderForm.get('mileage_limit')!.disable();
+    // this.orderForm.get('mileage_limit')!.disable();
 
   }
 
@@ -74,12 +77,9 @@ export class CarorderPage implements OnInit {
 
   }
 
-  onSubmit() {
-
-  }
-
   get pickup_date() {
     return this.orderForm.get('pickup_date')!;
+    
   }
 
   get dropoff_date() {
@@ -108,6 +108,32 @@ export class CarorderPage implements OnInit {
       this.orderForm.get('total_price')!.setValue(totalPrice);
       this.orderForm.get('mileage_limit')!.setValue(mileageLimit);
     }
+  }
+
+  // submit the order
+  onSubmit() {
+    let now = new Date().toISOString().slice(0, 16);
+    this.orderForm.get('order_date')!.setValue(now);
+    this.carsService.createOrder(this.orderForm.value).subscribe({
+      next: (result) => {
+        this.showAlert('Success', 'Order was created successfully');
+        this.orderForm.reset();
+      },
+      error: (err) => {
+        console.log(err);
+        this.showAlert('Error', 'Something went wrong');
+      }
+    });
+  }
+
+  async showAlert(title: string, message: string) {
+    const alert = await this.alertController.create({
+      header: title,
+      message: message,
+      buttons: ['OK'],
+    });
+
+    await alert.present();
   }
 
 }
