@@ -57,18 +57,26 @@ button.alert-button.alert-button-confirm {
     border-top-right-radius: 13px;
 }
 
-// Style1
+// style1
 // #432344
 // #ff2525
 // #e7eefb
 // #ffc03d
 
+// style2
+// #00966B
+// #01CD42
+// #F9F2EC
+// #FA0525
+// #010101
+// #282828
+
 ion-tab-bar {
-    --background: #432344;
+    --background: #282828;
 }
 
 ion-tab-button {
-    --background: #432344;
+    --background: #282828;
     --color: white;
     --color-selected: #ffc03d;
 }
@@ -79,7 +87,7 @@ ion-img.logo {
 }
 
 ion-toolbar.toolbarlogo {
-    --background: #432344;
+    --background: #00966B;
 }
 
 .yellow-btn {
