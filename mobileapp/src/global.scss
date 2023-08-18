@@ -63,12 +63,23 @@ button.alert-button.alert-button-confirm {
 // #e7eefb
 // #ffc03d
 
+ion-tab-bar {
+    --background: #1a0d0a;
+}
+
+ion-tab-button {
+    --background: #1a0d0a;
+    --color: white;
+    --color-selected: #ffc03d;
+}
+
+
 ion-img.logo {
     height: 60px;
 }
 
 ion-toolbar.toolbarlogo {
-    --background: #432344;
+    --background: #1a0d0a;
 }
 
 .yellow-btn {
