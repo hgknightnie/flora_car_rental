@@ -1,9 +1,8 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-img src="assets/logo.png" alt="Flora Car Rental"></ion-img>
+    <ion-img class="logo" slot="start" src="assets/logo.png" alt="Flora Car Rental"></ion-img>
   </ion-toolbar>
 </ion-header>
-
 <ion-content [fullscreen]="true">
   <div *ngIf="isDataAvailable">
     <app-car [car]="car"></app-car>
