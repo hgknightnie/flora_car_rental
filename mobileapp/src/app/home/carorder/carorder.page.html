@@ -1,8 +1,9 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-img class="logo" slot="start" src="assets/logo.png" alt="Flora Car Rental"></ion-img>
+  <ion-toolbar class="toolbarlogo">
+    <ion-img class="logo" slot="start" src="assets/logo-white.png" alt="Flora Car Rental"></ion-img>
   </ion-toolbar>
 </ion-header>
+
 <ion-content [fullscreen]="true">
   <div *ngIf="isDataAvailable">
     <app-car [car]="car"></app-car>
@@ -31,13 +32,12 @@
       <ion-input label="Total price:" labelPlacement="floating" formControlName="total_price"></ion-input>
     </ion-item> -->
     <ion-item>
-      <ion-label>Total Price:</ion-label> <ion-label color="primary" slot="end"
-        class="price_text">${{total_price.value}}</ion-label>
+      <ion-label>Total Price:</ion-label> <ion-label slot="end" class="price_text">${{total_price.value}}</ion-label>
     </ion-item>
   </form>
 
   <div id="btndiv">
-    <ion-button [disabled]="orderForm.invalid" (click)="onSubmit()">Submit</ion-button>
+    <ion-button class="yellow-btn" [disabled]="orderForm.invalid" (click)="onSubmit()">Submit</ion-button>
   </div>
 
   

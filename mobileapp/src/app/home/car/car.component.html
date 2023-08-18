@@ -1,4 +1,4 @@
-<ion-card color="light">
+<ion-card>
   <ion-card-content>
 
     <ion-grid>
@@ -21,7 +21,7 @@
                 </div>
               </ion-col>
               <ion-col size="auto">
-                <ion-text color="primary">
+                <ion-text class="price">
                   <span class="price_text">${{ car.price }} </span><span>/day</span>
                 </ion-text>
               </ion-col>
@@ -58,7 +58,7 @@
     </ion-grid>
 
     <!-- <ion-button fill="outline" size="small" id="viewbtn" [routerLink]="['/tabs/home/cardetail', car.car_id]">View</ion-button> -->
-    <ion-button fill="outline" size="small" id="viewbtn" (click)="viewDetail(car.car_id)">View</ion-button>
+    <ion-button fill="solid" size="small" id="viewbtn" (click)="viewDetail(car.car_id)">View</ion-button>
   </ion-card-content>
   
 

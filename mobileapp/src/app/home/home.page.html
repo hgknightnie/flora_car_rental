@@ -1,6 +1,6 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-img class="logo" slot="start" src="assets/logo.png" alt="Flora Car Rental"></ion-img>
+  <ion-toolbar class="toolbarlogo">
+    <ion-img class="logo" slot="start" src="assets/logo-white.png" alt="Flora Car Rental"></ion-img>
   </ion-toolbar>
 </ion-header>
 
@@ -14,8 +14,7 @@
         </ion-col>
         <ion-col size="auto" class="ion-no-padding">
           <ion-button fill="clear" class="ion-no-padding" (click)="navToMap()">
-            <ion-icon id="mapicon" name="location-outline" class="ion-float-right" size="large"
-              color="primary"></ion-icon>
+            <ion-icon id="mapicon" name="location-outline" class="ion-float-right" size="large"></ion-icon>
           </ion-button>
         </ion-col>
       </ion-row>
@@ -53,7 +52,7 @@
           <div class="ion-text-center">
             Filter the car list
           </div>
-          <ion-button slot="end" fill="solid" (click)="confirm()" size="small">Show Result</ion-button>
+          <ion-button slot="end" fill="solid" (click)="confirm()" class="yellow-btn" size="small">Show Result</ion-button>
         </ion-toolbar>
       </ion-header>
       <ion-content class="ion-padding">

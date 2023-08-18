@@ -1,7 +1,7 @@
 swiper-container {
     height: 300px;
     --swiper-pagination-bullet-inactive-color: var(--ion-color-step-200, #cccccc);
-    --swiper-pagination-color: var(--ion-color-primary, #3880ff);
+    --swiper-pagination-color: #ffc03d;
 }
 
 swiper-slide {
@@ -14,4 +14,12 @@ swiper-slide {
 .price_text {
     font-size: 25px;
     font-weight: bold;
+}
+
+ion-text.price {
+    color: #ff2525;
+}
+
+#yellow-btn {
+    --background: #ffc03d;
 }

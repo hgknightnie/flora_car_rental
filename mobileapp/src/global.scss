@@ -57,6 +57,20 @@ button.alert-button.alert-button-confirm {
     border-top-right-radius: 13px;
 }
 
+// Style1
+// #432344
+// #ff2525
+// #e7eefb
+// #ffc03d
+
 ion-img.logo {
     height: 60px;
+}
+
+ion-toolbar.toolbarlogo {
+    --background: #432344;
+}
+
+.yellow-btn {
+    --background: #ffc03d;
 }

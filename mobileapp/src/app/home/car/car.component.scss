@@ -1,3 +1,8 @@
+ion-card {
+    --background: #e7eefb;
+    color: black;
+}
+
 ion-grid {
     --ion-grid-padding: 0;
     --ion-grid-column-padding: 5px;
@@ -17,6 +22,10 @@ ion-img {
     font-weight: bold;
 }
 
+ion-text.price {
+    color: #ff2525
+}
+
 .car_make {
     font-size: 25px;
     font-weight: bold;
@@ -27,5 +36,5 @@ ion-img {
     position: absolute;
     right: 15px;
     bottom: 15px;
-    
+    --background: #ffc03d;
 }

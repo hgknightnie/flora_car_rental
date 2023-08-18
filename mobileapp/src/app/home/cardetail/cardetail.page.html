@@ -1,6 +1,6 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-img class="logo" slot="start" src="assets/logo.png" alt="Flora Car Rental"></ion-img>
+  <ion-toolbar class="toolbarlogo">
+    <ion-img class="logo" slot="start" src="assets/logo-white.png" alt="Flora Car Rental"></ion-img>
   </ion-toolbar>
 </ion-header>
 
@@ -21,12 +21,12 @@
   <ion-grid>
     <ion-row>
       <ion-col>
-        <ion-text>
+        <ion-text class="price">
           <span class="price_text">${{ car.price }} </span><span>/day</span>
         </ion-text>
       </ion-col>
       <ion-col size="auto">
-        <ion-button fill="solid" (click)="orderCar(car.car_id)">Order</ion-button>
+        <ion-button fill="solid" class="yellow-btn" (click)="orderCar(car.car_id)">Order</ion-button>
       </ion-col>
 
     </ion-row>
