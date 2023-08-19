@@ -1,5 +1,7 @@
 const Sequelize = require("sequelize");
 const config = require("../configuration/config");
+const Car= require("./car");
+const Customer = require("./customer");
 
 const Order = config.define("order", {
     order_id: {
@@ -46,5 +48,21 @@ const Order = config.define("order", {
     }
     
 }, {timestamps: false});
+
+Order.belongsTo(Car, {
+    foreignKey: 'car_id'
+});
+
+Car.hasMany(Order, {
+    foreignKey: 'car_id'
+});
+
+Order.belongsTo(Customer, {
+    foreignKey: 'customer_id'
+});
+
+Customer.hasMany(Order, {
+    foreignKey: 'customer_id'
+});
 
 module.exports = Order;

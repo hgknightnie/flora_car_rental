@@ -1,0 +1,49 @@
+<div *ngIf="isDataAvailable" class="container">
+    <table class="table table-striped table-hover table-responsive">
+        <thead>
+            <tr>
+                <th scope="col">Customer</th>
+                <th scope="col">Car</th>
+                <th scope="col">Pick up at</th>
+                <th scope="col">Pick up date</th>
+                <th scope="col">Drop off at</th>
+                <th scope="col">Drop off date</th>
+                <th scope="col">Total Price</th>
+                <th scope="col">Mileage Limit</th>
+                <th scope="col">Order Date</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr *ngFor="let order_item of orders">
+                <td>
+                    {{order_item.customer.customer_name}}
+                </td>
+                <td>
+                    {{order_item.car.make}}-{{order_item.car.model}}
+                </td>
+                <td>{{order_item.pickup_location}}</td>
+                <td>
+                    {{order_item.pickup_date | date:'yyyy-MM-dd HH:mm' }}
+                </td>
+                <td>{{order_item.dropoff_location}}</td>
+                <td>
+                    {{order_item.dropoff_date | date:'yyyy-MM-dd HH:mm' }}
+                </td>
+                <td>{{order_item.total_price}}</td>
+                <td>{{order_item.mileage_limit}}</td>
+                <td>
+                    {{order_item.order_date | date:'yyyy-MM-dd HH:mm' }}
+                </td>
+                <td>
+                    <button class="btn btn-warning"><i class="bi bi-pencil-square"></i></button>
+                </td>
+                <td>
+                    <button class="btn btn-warning"><i class="bi bi-trash3-fill"></i></button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

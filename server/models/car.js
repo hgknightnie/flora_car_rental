@@ -81,7 +81,7 @@ Car.belongsTo(Vendor, {
 });
 
 Vendor.hasMany(Car, {
-    foreignKey: 'car_id'
+    foreignKey: 'vendor_id'
 });
 
 module.exports = Car;

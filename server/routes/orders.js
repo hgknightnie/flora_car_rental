@@ -1,9 +1,15 @@
 const Order = require("../models/order");
+const Customer = require("../models/customer");
+const Car = require("../models/car");
 const router = require("express").Router();
 
 // Get all orders
 router.get("/", (req, res) => {
-    Order.findAll().then((results) => {
+    // relate to tables
+    let options = {
+        include: [Customer, Car]
+    };
+    Order.findAll(options).then((results) => {
         res.status(200).send(results);
     }).catch((err) => {
         res.status(500).send(err);
