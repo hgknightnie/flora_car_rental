@@ -3,6 +3,7 @@ const Vendor = require("../models/vendor");
 const CarImage = require("../models/car_image");
 const router = require("express").Router();
 const {Op} = require('sequelize');
+const sequelize = require("sequelize");
 
 // Get all cars
 /* queryParam: 
@@ -18,14 +19,17 @@ router.get("/", (req, res) => {
 
     // order
     let queryOrder = req.query.order;
+    options.order = [];
     if(queryOrder !== undefined) {
         let orderDirection = req.query.direction;
         if(orderDirection !== undefined && orderDirection.toLowerCase() === 'desc') {
-            options.order = [[queryOrder, 'DESC']];
+            options.order.push([queryOrder, 'DESC']);
         } else {
-            options.order = [[queryOrder]];
+            options.order.push([queryOrder]);
         }
     }
+    options.order.push(['car_id']);
+    options.order.push([sequelize.col('car_images.image_id')]);
 
     // filter
     let make = req.query.make;
