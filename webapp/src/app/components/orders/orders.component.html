@@ -38,10 +38,10 @@
                     {{order_item.order_date | date:'yyyy-MM-dd HH:mm' }}
                 </td>
                 <td>
-                    <button class="btn btn-warning"><i class="bi bi-pencil-square"></i></button>
+                    <button class="btn btn-warning"><i class="bi bi-check-square"></i></button>
                 </td>
                 <td>
-                    <button class="btn btn-warning"><i class="bi bi-trash3-fill"></i></button>
+                    <button class="btn btn-warning" (click)="deleteOrder(order_item.order_id)"><i class="bi bi-trash3-fill"></i></button>
                 </td>
             </tr>
         </tbody>

@@ -52,7 +52,7 @@ export class CarorderPage implements OnInit {
 
 
         this.order = {
-          order_id: null,
+          order_id: 0,
           customer_id: this.customer.customer_id,
           car_id: this.car.car_id,
           pickup_location: this.car.location,

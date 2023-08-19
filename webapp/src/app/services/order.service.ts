@@ -12,4 +12,8 @@ export class OrderService {
   getOrders() {
     return this.http.get<Iorder []>("http://localhost:3000/orders");
   }
+
+  deleteOrder(orderId: number) {
+    return this.http.delete<Iorder>(`http://localhost:3000/orders/${orderId}`);
+  }
 }

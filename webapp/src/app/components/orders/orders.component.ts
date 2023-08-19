@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, numberAttribute } from '@angular/core';
 import { Iorder } from 'src/app/interfaces/iorder';
 import { OrderService } from 'src/app/services/order.service';
 
@@ -23,5 +23,19 @@ export class OrdersComponent {
       }
     });
 
+  }
+  
+  deleteOrder(orderId: number) {
+    if(confirm(`Are you sure to delete this order (id: ${orderId})?`)) {
+      this.orderService.deleteOrder(orderId).subscribe({
+        next: (results) => {
+          const orderIndex = this.orders.findIndex((obj) => obj.order_id === orderId);
+          this.orders.splice(orderIndex, 1);
+        },
+        error: (err) => {
+          console.log(err);
+        }
+      });
+    }    
   }
 }
