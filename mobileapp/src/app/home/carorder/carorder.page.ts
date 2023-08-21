@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { Iorder } from './../../interfaces/iorder';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -26,7 +27,12 @@ export class CarorderPage implements OnInit {
   }
   strNow = new Date().toISOString().slice(0, 16);
 
-  constructor(private fb: FormBuilder, private route: ActivatedRoute, private carsService: CarsService, private alertController: AlertController) {
+  constructor(
+    private fb: FormBuilder, 
+    private route: ActivatedRoute, 
+    private carsService: CarsService, 
+    private alertController: AlertController,
+    private datePipe : DatePipe) {
     this.orderForm = fb.group({
       customer_id: ['', [Validators.required]],
       car_id: ['', [Validators.required]],
@@ -112,8 +118,7 @@ export class CarorderPage implements OnInit {
 
   // submit the order
   onSubmit() {
-    let now = new Date().toISOString().slice(0, 16);
-    this.orderForm.get('order_date')!.setValue(now);
+    this.orderForm.get('order_date')!.setValue(this.getCurrentTimeString());
     this.carsService.createOrder(this.orderForm.value).subscribe({
       next: (result) => {
         this.showAlert('Success', 'Order was created successfully');
@@ -134,6 +139,19 @@ export class CarorderPage implements OnInit {
     });
 
     await alert.present();
+  }
+
+  getCurrentTimeString() {
+    // let now = new Date()
+    // let month = `${now.getMonth() < 10 ? '0' + now.getMonth() : now.getMonth()}`;
+    // let nowstr = `${now.getFullYear()}-${month}-${now.getDate()} ${now.getHours()}:${now.getMinutes()}`;
+    // console.log('1', nowstr);
+    // console.log('2', now.toISOString());
+    // console.log('3', now.toLocaleString());
+    // console.log('4', now.toString());
+    // console.log('5', Date.now());
+
+    return this.datePipe.transform(new Date(), 'yyyy-MM-dd hh:mm');
   }
 
 }
