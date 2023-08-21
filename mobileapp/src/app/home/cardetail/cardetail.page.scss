@@ -23,3 +23,16 @@ ion-text.price {
 #yellow-btn {
     --background: #ffc03d;
 }
+
+.cell-field {
+    border-color: lightgray;
+    border-width: .01em;
+    border-style: solid;
+    background-color: #F9F2EC
+}
+
+.cell-value {
+    border-color: lightgray;
+    border-width: .01em;
+    border-style: solid;
+}
