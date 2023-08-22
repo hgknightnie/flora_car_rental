@@ -13,6 +13,7 @@ export class HomePage implements OnInit {
 
   @ViewChild(IonModal) modal!: IonModal;
 
+  // store the filter result
   filter = {
     car_type: {
       is_check: false,
@@ -33,13 +34,15 @@ export class HomePage implements OnInit {
       high_price: 100
     }
   }
-
+  // use for filter
   carTypeGroupDisabled = true;
   fuelTypeGroupDisabled = true;
   priceGroupDisabled = true;
 
+  // Car List
   cars!: Icar[];
 
+  // use to sort price
   priceDirection = 'desc';
   priceIconName = 'chevron-down-outline';
 
@@ -82,8 +85,10 @@ export class HomePage implements OnInit {
     });
   }
 
-  filterList(fileName: string, value: string) {
-    this.carService.getCarsByFilter(fileName, value).subscribe({
+  // filter the list by fieldName and queryClause
+  // @param queryClause seperate by ',', use for sql 'in'
+  filterList(fieldName: string, queryClause: string) {
+    this.carService.getCarsByFilter(fieldName, queryClause).subscribe({
       next: (results) => {
         this.cars = results;
       },
@@ -104,6 +109,7 @@ export class HomePage implements OnInit {
     this.modal.dismiss(this.filter, 'confirm');
   }
 
+  // close filter dialog
   onWillDismiss(event: Event) {
     const ev = event as CustomEvent<OverlayEventDetail<string>>;
     let queryClause = '';
@@ -152,6 +158,7 @@ export class HomePage implements OnInit {
     }
   }
 
+  // toggle change in filter dialog
   catTypeChanged(event: Event) {
     this.filter.fuel_type.is_check = false;
     this.fuelTypeGroupDisabled = true;
@@ -166,6 +173,7 @@ export class HomePage implements OnInit {
     }
   }
 
+  // toggle change in filter dialog
   fuelTypeChanged(event: Event) {
     this.filter.car_type.is_check = false;
     this.carTypeGroupDisabled = true;
@@ -180,6 +188,7 @@ export class HomePage implements OnInit {
     }
   }
 
+  // toggle change in filter dialog
   priceTypeChanged(event: Event) {
     this.filter.fuel_type.is_check = false;
     this.fuelTypeGroupDisabled = true;

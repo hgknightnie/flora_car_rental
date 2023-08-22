@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   keys: {
-    googleMaps: 'AIzaSyD8m5UNo6VJkwFU2gA1_yZxzuIcWPWSzS0'
+    googleMaps: 'YOUR_API_KEY_HERE'
   }
 };
 

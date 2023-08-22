@@ -19,6 +19,8 @@ export class CarorderPage implements OnInit {
   orderForm!: FormGroup;
   isDataAvailable: boolean = false;
   order!: Iorder
+
+  // TODO change to real login user
   customer: Icustomer = {
     customer_id: 1,
     customer_name: 'John Wick',
@@ -131,6 +133,7 @@ export class CarorderPage implements OnInit {
     });
   }
 
+  // show success dialog
   async showAlert(title: string, message: string) {
     const alert = await this.alertController.create({
       header: title,
@@ -151,7 +154,7 @@ export class CarorderPage implements OnInit {
     // console.log('4', now.toString());
     // console.log('5', Date.now());
 
-    return this.datePipe.transform(new Date(), 'yyyy-MM-dd hh:mm');
+    return this.datePipe.transform(new Date(), 'yyyy-MM-dd HH:mm');
   }
 
 }

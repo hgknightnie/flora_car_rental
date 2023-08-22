@@ -25,6 +25,7 @@ export class CardetailPage implements OnInit {
   ngOnInit() {
   }
 
+  // navigate to order page
   orderCar(carID: number) {
     this.carSubjectService.setCar(this.car);
     this.navCtrl.navigateForward(`/tabs/home/carorder/${carID}`);
