@@ -1,8 +1,11 @@
 <ion-content [fullscreen]="true">
+  <!-- map plugin -->
   <capacitor-google-map #map id="google-map"></capacitor-google-map>
+  <!-- car legend -->
   <div class="legend">
     <ion-img id="legend_img" src="assets/icon/cars/legend.png" slot="start"></ion-img>
   </div>
+  <!-- selected car -->
   <div *ngIf="selectedCar">
     <app-car [car]="selectedCar"></app-car>
   </div>

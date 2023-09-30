@@ -14,7 +14,8 @@ import { CarsService } from '../services/cars.service';
 })
 
 /*
-  Google Map
+  show cars in Google map using ionic capacitor
+  provide car selection from map
 */
 export class GmapPage implements OnDestroy  {
 
