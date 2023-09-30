@@ -5,6 +5,7 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
+  <!-- car images -->
   <div *ngIf="car.car_images[0]; else noImage">
     <swiper-container #swiper [loop]="true" [pagination]="true" [zoom]="true">
       <swiper-slide *ngFor="let image of car.car_images">
@@ -18,6 +19,7 @@
     <ion-img src="assets/cars/default-car.jpg" alt="Car Image"></ion-img>
   </ng-template>
 
+  <!-- car information -->
   <ion-grid>
     <ion-row>
       <ion-col>

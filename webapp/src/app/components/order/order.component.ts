@@ -6,6 +6,8 @@ import { Iorder } from 'src/app/interfaces/iorder';
   templateUrl: './order.component.html',
   styleUrls: ['./order.component.css']
 })
+
+// order management
 export class OrderComponent {
   @Input() order!: Iorder;
 }

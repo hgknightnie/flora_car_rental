@@ -5,6 +5,7 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
+  <!-- search location and opening map page -->
   <ion-toolbar color="light">
 
     <ion-grid>
@@ -22,6 +23,7 @@
 
   </ion-toolbar>
 
+  <!-- car list sorting and filtering -->
   <ion-toolbar color="light">
     <ion-buttons slot="start">
       <ion-button fill="clear" (click)="sortList('ordertimes', 'desc')">Popular</ion-button>
@@ -41,6 +43,7 @@
     </ion-buttons>
   </ion-toolbar>
 
+  <!-- car list filtering modal dialog -->
   <ion-modal #modal trigger="open-modal" (willDismiss)="onWillDismiss($event)" [enterAnimation]="enterAnimation"
     [leaveAnimation]="leaveAnimation">
     <ng-template>
@@ -126,6 +129,7 @@
     </ng-template>
   </ion-modal>
 
+  <!-- car list -->
   <div *ngFor="let car_item of cars">
     <app-car [car]="car_item"></app-car>
   </div>

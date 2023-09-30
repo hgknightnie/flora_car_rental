@@ -17,7 +17,7 @@ export class CarComponent  implements OnInit {
   ngOnInit() {
   }
 
-  // navigate to detail page
+  // navigate to car detail page
   viewDetail(carID: number) {
     this.carSubjectService.setCar(this.car);
     this.navCtrl.navigateForward(`/tabs/home/cardetail/${this.car.car_id}`);

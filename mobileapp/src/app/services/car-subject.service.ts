@@ -6,7 +6,8 @@ import { Icar } from '../interfaces/icar';
   providedIn: 'root'
 })
 
-// RxJS
+// use RxJS to get car information
+// reduce access to database
 export class CarSubjectService {
   private car$ = new BehaviorSubject<any>({});
   carObs$ = this.car$.asObservable();

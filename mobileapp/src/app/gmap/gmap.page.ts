@@ -12,6 +12,10 @@ import { CarsService } from '../services/cars.service';
   templateUrl: './gmap.page.html',
   styleUrls: ['./gmap.page.scss'],
 })
+
+/*
+  Google Map
+*/
 export class GmapPage implements OnDestroy  {
 
   // the template reference variable for the DOM element in the component view where the Google Map will be rendered
@@ -33,6 +37,7 @@ export class GmapPage implements OnDestroy  {
 
   constructor(private carService: CarsService) {
 
+    //show Calgary by default
     this.calgaryLocation = {
       city: 'Calgary',
       lat: 51.03938287793352,

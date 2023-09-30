@@ -5,6 +5,8 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './myrental.page.html',
   styleUrls: ['./myrental.page.scss'],
 })
+
+// TODO show my rented cars 
 export class MyrentalPage implements OnInit {
 
   constructor() { }

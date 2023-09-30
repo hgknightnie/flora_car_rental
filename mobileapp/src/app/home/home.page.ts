@@ -9,6 +9,8 @@ import { OverlayEventDetail } from '@ionic/core/components';
   templateUrl: './home.page.html',
   styleUrls: ['./home.page.scss'],
 })
+
+// Home Page
 export class HomePage implements OnInit {
 
   @ViewChild(IonModal) modal!: IonModal;
@@ -98,6 +100,7 @@ export class HomePage implements OnInit {
     });
   }
 
+  // navigate to map page
   navToMap() {
     // this.router.navigate(['/gmap']);
     this.navCtrl.navigateForward('tabs/gmap');

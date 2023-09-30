@@ -1,3 +1,4 @@
+// verdor interface
 export interface IVendor {
     vendor_id: number,
 	vendor_name: string,

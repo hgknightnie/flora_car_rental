@@ -5,6 +5,8 @@ import { Component } from '@angular/core';
   templateUrl: './vendor.component.html',
   styleUrls: ['./vendor.component.css']
 })
+
+// TODO verdor management
 export class VendorComponent {
 
 }

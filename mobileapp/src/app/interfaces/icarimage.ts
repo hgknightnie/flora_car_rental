@@ -1,3 +1,4 @@
+// car images
 export interface ICarImage {
     image_id: number,
 	car_id: number,

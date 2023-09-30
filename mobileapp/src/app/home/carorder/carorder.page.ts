@@ -13,6 +13,8 @@ import { CarsService } from 'src/app/services/cars.service';
   templateUrl: './carorder.page.html',
   styleUrls: ['./carorder.page.scss'],
 })
+
+// order the car 
 export class CarorderPage implements OnInit {
   carId: number = 0;
   car!: Icar;
@@ -53,6 +55,7 @@ export class CarorderPage implements OnInit {
       this.carId = parseInt(id);
     }
 
+    // get car information from database
     this.carsService.getCar(this.carId).subscribe({
       next: (result) => {
         // console.log(result);
@@ -144,6 +147,7 @@ export class CarorderPage implements OnInit {
     await alert.present();
   }
 
+  // format time string
   getCurrentTimeString() {
     // let now = new Date()
     // let month = `${now.getMonth() < 10 ? '0' + now.getMonth() : now.getMonth()}`;

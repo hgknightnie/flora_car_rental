@@ -1,6 +1,7 @@
 import { ICarImage } from "./icarimage";
 import { IVendor } from "./ivendor";
 
+// car interface
 export interface Icar {
     car_id: number;
     location: string;

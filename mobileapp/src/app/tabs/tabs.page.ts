@@ -5,6 +5,8 @@ import { Component } from '@angular/core';
   templateUrl: 'tabs.page.html',
   styleUrls: ['tabs.page.scss']
 })
+
+// main tab frame
 export class TabsPage {
 
   constructor() {}

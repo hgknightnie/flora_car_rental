@@ -3,6 +3,7 @@
 
     <ion-grid>
       <ion-row>
+        <!-- car default image -->
         <ion-col size="auto">
           <ion-img *ngIf="car.car_images[0]; else noImage"
             src="{{ car.car_images[0].path}}" alt="Car Image"></ion-img>
@@ -12,6 +13,7 @@
           <!-- <ion-button fill="clear" size="small" [routerLink]="['/tabs/home/cardetail', car.car_id]">View</ion-button> -->
         </ion-col>
 
+        <!-- car detail information -->
         <ion-col>
           <ion-grid>
             <ion-row>

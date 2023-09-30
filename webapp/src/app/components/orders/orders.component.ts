@@ -7,6 +7,8 @@ import { OrderService } from 'src/app/services/order.service';
   templateUrl: './orders.component.html',
   styleUrls: ['./orders.component.css']
 })
+
+// orders management
 export class OrdersComponent {
   orders!: Iorder[];
   isDataAvailable: boolean = false;
@@ -25,6 +27,7 @@ export class OrdersComponent {
 
   }
   
+  // Delete a order by orderId
   deleteOrder(orderId: number) {
     if(confirm(`Are you sure to delete this order (id: ${orderId})?`)) {
       this.orderService.deleteOrder(orderId).subscribe({
